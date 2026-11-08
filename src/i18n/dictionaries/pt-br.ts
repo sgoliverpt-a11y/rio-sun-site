@@ -89,6 +89,8 @@ const ptBR: Dictionary = {
       quizHint: "Três perguntas rápidas, uma sugestão.",
     },
     expertise: {
+      prev: "Vídeos anteriores",
+      next: "Próximos vídeos",
       label: "Conhecimento",
       title: "Além dos Mitos",
       lead: "Explicações curtas e honestas sobre drenagem linfática e massagem brasileira, direto da sala de atendimento.",

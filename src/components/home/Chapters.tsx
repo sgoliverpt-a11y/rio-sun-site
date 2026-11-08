@@ -4,6 +4,7 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 import { categories, treatments, byCategory } from "@/content/catalogue";
 import { reviews, faqs } from "@/content/people-reviews";
 import { site } from "@/content/site";
+import { ScrollRail } from "@/components/ScrollRail";
 import { Media } from "@/components/Media";
 import { ButtonLink, ChapterLabel, SplitHeading } from "@/components/ui";
 import { TreatmentGallery } from "./TreatmentGallery";
@@ -71,9 +72,10 @@ export function Expertise({ locale, dict }: P) {
         </div>
 
         <div className="mt-16 grid gap-14 lg:grid-cols-12">
-          <ul className="rail -mx-[var(--gutter)] flex gap-4 overflow-x-auto px-[var(--gutter)] lg:col-span-7 lg:mx-0 lg:px-0">
+          <ScrollRail className="lg:col-span-7" label={s.title} prev={s.prev} next={s.next}
+            itemClassName="w-[64vw] sm:w-[38vw] lg:w-[calc((100%-2rem)/3)]">
             {vids.map((v, i) => (
-              <li key={v} className="w-[64vw] shrink-0 sm:w-[38vw] lg:w-auto lg:flex-1" data-reveal="fan" data-fan={i === 2 ? "r" : i === 1 ? "c" : undefined} data-reveal-delay={String(i)}>
+              <div key={v}>
                 <button type="button" className="group relative block w-full overflow-hidden text-left" aria-label={`${dict.cta.watch}: ${s.videos[i]}`}>
                   <Media id={v} locale={locale} tone="dark" />
                   <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold-300/60 text-gold-200 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
@@ -81,9 +83,9 @@ export function Expertise({ locale, dict }: P) {
                   </span>
                 </button>
                 <p className="mt-4 font-display text-lg leading-snug">{s.videos[i]}</p>
-              </li>
+              </div>
             ))}
-          </ul>
+          </ScrollRail>
 
           <div className="lg:col-span-5">
             <h3 className="eyebrow text-accent">{s.faqTitle}</h3>

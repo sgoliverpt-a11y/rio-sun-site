@@ -87,6 +87,8 @@ const en = {
       quizHint: "Three quick questions, one suggestion.",
     },
     expertise: {
+      prev: "Previous videos",
+      next: "Next videos",
       label: "Expertise",
       title: "Beyond the Myths",
       lead: "Short, honest explanations about lymphatic drainage and Brazilian massage, straight from the treatment room.",
