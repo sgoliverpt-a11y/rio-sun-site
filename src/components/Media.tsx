@@ -30,7 +30,7 @@ export function Media({
   if (a.src) {
     if (a.kind === "video") {
       return (
-        <div className={box} style={ratioStyle}>
+        <div className={a.kind === "video" && shape === "arch" ? box.replace("[clip-path:inset(0_round_9999px_9999px_0_0)]", "[transform:translateZ(0)]") : box} style={ratioStyle}>
           {/* autoplay is started by <VideoAutoplay/> only when visible and motion is allowed; the poster stays otherwise */}
           {/* the poster is a real image underneath; the video stays transparent until its first frame
               is actually painting (VideoAutoplay sets data-live), so mobile browsers never flash black */}
