@@ -8,7 +8,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear();
   return (
     <footer className="surface-dark grain border-t border-line" data-header="dark">
-      <div className="gutter mx-auto grid max-w-[1600px] gap-14 pb-28 pt-20 md:grid-cols-12 md:pb-14">
+      <div className="gutter mx-auto grid max-w-[1600px] gap-14 pb-[calc(12.5rem+env(safe-area-inset-bottom))] pt-20 md:grid-cols-12 md:pb-14">
         <div className="md:col-span-4">
           <Logo className="h-auto w-52" />
           <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-muted">{dict.footer.tagline}</p>
