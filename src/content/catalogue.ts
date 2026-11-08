@@ -280,7 +280,7 @@ export const treatments: Treatment[] = [
       en: "Reiki combined with a foot massage, in one fifty-minute ritual.",
       "pt-br": "Reiki combinado com massagem nos pés, num ritual de cinquenta minutos.",
     },
-    media: "REIKI_IMAGE",
+    media: "REIKI_FEET_IMAGE",
     bookOn: ["treatwell"],
   },
   {

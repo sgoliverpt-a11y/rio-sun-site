@@ -7,6 +7,7 @@ import { categories, type Treatment } from "@/content/catalogue";
 import { site } from "@/content/site";
 import { summaryLine, reviewNote } from "@/lib/format";
 import { Media } from "@/components/Media";
+import { assets } from "@/content/assets";
 
 /**
  * HOME · TREATMENTS GALLERY — a discovery rail fed by the central catalogue.
@@ -151,7 +152,7 @@ export function TreatmentGallery({ items, locale, dict }: { items: Treatment[]; 
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(28,1,7,.0)_45%,rgba(28,1,7,.55))]" />
                   <span className="absolute left-4 top-4 text-[11px] font-semibold uppercase tracking-[.2em] text-gold-100/85">{t(cat.name, locale)}</span>
                   <span className="absolute right-4 top-3 font-display text-[1.35rem] italic text-gold-200/90">{pad(i + 1)}</span>
-                  <span className="absolute bottom-4 left-4 font-mono text-[9px] tracking-[.14em] text-gold-100/50">{tr.media}</span>
+                  {!assets[tr.media].src && <span className="absolute bottom-4 left-4 font-mono text-[9px] tracking-[.14em] text-gold-100/50">{tr.media}</span>}
                 </Link>
                 <div className="flex flex-1 flex-col border-t border-line pt-5 mt-5">
                   <p className="eyebrow text-muted">{summaryLine(tr, dict, locale)}</p>
