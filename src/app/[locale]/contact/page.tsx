@@ -6,6 +6,9 @@ import { PageHero } from "@/components/PageHero";
 import { Media } from "@/components/Media";
 import { MapEmbed } from "@/components/MapEmbed";
 import { BookingButtons } from "@/components/BookingButtons";
+import { ContactForm } from "@/components/ContactForm";
+import Link from "next/link";
+import { href } from "@/i18n/config";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -38,10 +41,15 @@ export default async function Contact({ params }: Props) {
               <div className="py-7"><dt className="eyebrow text-accent">{c.gettingHere}</dt><dd className="mt-3 text-[16px] leading-relaxed">{c.gettingHereText}</dd></div>
               <div className="py-7" data-status="conflict" data-review-note="CONFLICT: hours differ between Fresha and Treatwell, see data report"><dt className="eyebrow text-accent">{c.hours}</dt><dd className="mt-3 text-[16px] leading-relaxed">{c.hoursText}</dd></div>
               <div className="py-7"><dt className="eyebrow text-accent">{c.language}</dt><dd className="mt-3 text-[16px]">{c.languageText}</dd></div>
-              <div className="py-7" data-status="partial" data-review-note="TO CONFIRM: phone + e-mail">
+              <div className="py-7">
                 <dt className="eyebrow text-accent">{c.contactTitle}</dt>
-                <dd className="mt-3 text-[16px] leading-relaxed">{c.contactPending}</dd>
-                <dd className="mt-3"><a className="link-underline" href={site.links.instagram} target="_blank" rel="noopener">@riosunmassagetherapy</a></dd>
+                <dd className="mt-3 text-[16px] leading-relaxed text-muted">{c.contactPending}</dd>
+                <dd className="mt-5 grid gap-3 text-[17px]">
+                  <span><span className="mr-3 text-[13px] text-muted">{c.phone}</span><a className="link-underline font-display text-[1.35rem] text-burgundy-800" href={site.contact.phoneHref}>{site.contact.phone}</a></span>
+                  <span><span className="mr-3 text-[13px] text-muted">{c.email}</span><a className="link-underline break-all text-burgundy-800" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></span>
+                  <span><span className="mr-3 text-[13px] text-muted">{c.whatsapp}</span><a className="link-underline text-burgundy-800" href={`${site.contact.whatsapp}?text=${encodeURIComponent(dict.whatsapp.message)}`} target="_blank" rel="noopener">{site.contact.phone}</a></span>
+                  <span><span className="mr-3 text-[13px] text-muted">Instagram</span><a className="link-underline text-burgundy-800" href={site.links.instagram} target="_blank" rel="noopener">@riosunmassagetherapy</a></span>
+                </dd>
               </div>
             </dl>
             <p className="mt-8 text-[13px] leading-relaxed text-muted">{c.venueNote}</p>
@@ -50,6 +58,19 @@ export default async function Contact({ params }: Props) {
           <div className="space-y-6 md:col-span-6 md:col-start-7">
             <MapEmbed src={site.venue.mapEmbed} title={c.mapTitle} cta={c.loadMap} note={c.mapConsent} />
             <Media id="CONTACT_EXTERIOR_IMAGE" locale={locale} tone="light" />
+          </div>
+        </div>
+      </section>
+
+      <section data-header="light" className="surface-cream" aria-labelledby="contact-form">
+        <div className="gutter mx-auto grid max-w-[1600px] gap-12 py-20 md:grid-cols-12 md:py-28">
+          <div className="md:col-span-4">
+            <h2 id="contact-form" className="display-md text-burgundy-800">{c.form.title}</h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-muted">{c.form.lead}</p>
+            <Link href={href(locale, "/find-your-treatment")} className="eyebrow link-underline mt-8 inline-block text-accent">{dict.home.treatments.quiz}</Link>
+          </div>
+          <div className="md:col-span-7 md:col-start-6">
+            <ContactForm locale={locale} dict={dict} />
           </div>
         </div>
       </section>

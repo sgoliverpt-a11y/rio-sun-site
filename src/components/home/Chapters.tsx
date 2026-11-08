@@ -1,54 +1,52 @@
 import Link from "next/link";
 import { href, t, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { categories, featured, byCategory } from "@/content/catalogue";
+import { categories, treatments, byCategory } from "@/content/catalogue";
 import { reviews, faqs } from "@/content/people-reviews";
 import { site } from "@/content/site";
 import { Media } from "@/components/Media";
 import { ButtonLink, ChapterLabel, SplitHeading } from "@/components/ui";
-import { TreatmentCard } from "@/components/TreatmentCard";
+import { TreatmentGallery } from "./TreatmentGallery";
 import { ReviewCard, RatingBadges } from "@/components/ReviewCard";
 import { BookingButtons } from "@/components/BookingButtons";
 import { Logo } from "@/components/Logo";
 
 type P = { locale: Locale; dict: Dictionary };
 
-/* ── 04 TREATMENTS ───────────────────────────────────────── */
+/* ── 04 TREATMENTS — discovery gallery (full catalogue; the Treatments page stays the organised menu) ── */
 export function Treatments({ locale, dict }: P) {
   const s = dict.home.treatments;
-  const list = featured();
   return (
-    <section data-chapter="04" data-header="light" className="surface-light pb-28 pt-24 md:pb-40 md:pt-32" aria-labelledby="ch-treatments">
+    <section data-chapter="04" data-header="light" className="surface-light overflow-hidden pb-28 pt-24 md:pb-36 md:pt-32" aria-label={s.title}>
       <div className="gutter mx-auto max-w-[1600px]">
         <div className="grid items-end gap-8 md:grid-cols-12">
-          <div className="md:col-span-8">
+          <div className="md:col-span-7">
             <ChapterLabel n="04">{s.label}</ChapterLabel>
             <SplitHeading lines={[s.title]} className="display-lg mt-8 text-burgundy-800" />
           </div>
-          <p className="lede text-muted md:col-span-4" data-reveal="fade">{s.lead}</p>
+          <div className="md:col-span-5" data-reveal="fade">
+            <p className="lede text-muted">{s.lead}</p>
+            <Link href={href(locale, "/find-your-treatment")} className="eyebrow link-underline mt-6 inline-block text-accent">{s.quiz}</Link>
+          </div>
         </div>
+      </div>
 
-        <div className="rail -mx-[var(--gutter)] mt-16 flex gap-6 overflow-x-auto px-[var(--gutter)] md:mx-0 md:grid md:grid-cols-3 md:gap-10 md:overflow-visible md:px-0">
-          {list.map((tr, i) => (
-            <div key={tr.slug} className={`w-[78vw] shrink-0 sm:w-[46vw] md:w-auto ${i === 1 ? "md:mt-20" : ""}`}>
-              <TreatmentCard tr={tr} locale={locale} dict={dict} index={i} />
-            </div>
+      <div className="mt-14 md:mt-20">
+        <TreatmentGallery items={treatments} locale={locale} dict={dict} />
+      </div>
+
+      <div className="gutter mx-auto mt-16 max-w-[1600px] border-t border-line pt-10 md:mt-20">
+        <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((c) => (
+            <li key={c.id} data-reveal="fade">
+              <Link href={href(locale, "/treatments") + `#${c.id}`} className="group block">
+                <span className="eyebrow text-accent">{String(byCategory(c.id).length).padStart(2, "0")}</span>
+                <span className="mt-2 block font-display text-xl text-burgundy-800 transition-colors group-hover:text-gold-700">{t(c.name, locale)}</span>
+              </Link>
+            </li>
           ))}
-        </div>
-
-        <div className="mt-20 border-t border-line pt-10 md:mt-28">
-          <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((c) => (
-              <li key={c.id} data-reveal="fade">
-                <Link href={href(locale, "/treatments") + `#${c.id}`} className="group block">
-                  <span className="eyebrow text-accent">{String(byCategory(c.id).length).padStart(2, "0")}</span>
-                  <span className="mt-2 block font-display text-xl text-burgundy-800 transition-colors group-hover:text-gold-700">{t(c.name, locale)}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-12"><ButtonLink href={href(locale, "/treatments")} variant="burgundy">{dict.cta.allTreatments}</ButtonLink></div>
-        </div>
+        </ul>
+        <div className="mt-12"><ButtonLink href={href(locale, "/treatments")} variant="burgundy">{dict.cta.allTreatments}</ButtonLink></div>
       </div>
     </section>
   );

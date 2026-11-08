@@ -6,6 +6,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileBookBar } from "@/components/MobileBookBar";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { RevealObserver } from "@/components/RevealObserver";
 import { ReviewModeToggle } from "@/components/ReviewModeToggle";
 import { MotionProvider } from "@/motion/MotionProvider";
@@ -36,6 +37,8 @@ const jsonLd = {
   name: site.name,
   description: "Brazilian lymphatic drainage, sculpting massage and facial treatments.",
   address: { "@type": "PostalAddress", streetAddress: `${site.venue.host}, ${site.venue.street}`, addressLocality: site.venue.city, postalCode: site.venue.postcode, addressCountry: "GB" },
+  telephone: site.contact.phone,
+  email: site.contact.email,
   sameAs: [site.links.instagram, site.links.treatwell, site.links.freshaProfile],
   url: SITE_URL,
 };
@@ -51,6 +54,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <main id="main">{children}</main>
         <Footer locale={locale} dict={dict} />
         <MobileBookBar hrefBook={href(locale, "/booking")} label={dict.nav.book} sub="Rio Sun · Fulham" />
+        <WhatsAppButton label={dict.whatsapp.label} message={dict.whatsapp.message} />
         <ReviewModeToggle label={dict.review.toggle} hint={dict.review.hint} />
         <RevealObserver />
         <MotionProvider />

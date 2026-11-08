@@ -41,8 +41,14 @@ export const site = {
     treatwell: { mon: "11:00–19:00", tue: "10:00–19:00", wed: "10:00–19:00", thu: "10:00–19:00", fri: "09:00–19:00", sat: "09:00–18:30", sun: "10:00–19:00" },
   },
   contact: {
-    phone: null as string | null, // TODO: client to supply
-    email: null as string | null, // TODO: client to supply
+    // Supplied by the client on 2026-11-08
+    phone: "+44 7576 223654",
+    phoneHref: "tel:+447576223654",
+    whatsapp: "https://wa.me/447576223654",
+    email: "Riosunmassagetherapy@outlook.com",
+    /** Contact form delivery (FormSubmit, no backend needed). The first message
+     *  sends an activation e-mail to this inbox; after one click, forms are delivered. */
+    formEndpoint: "https://formsubmit.co/ajax/Riosunmassagetherapy@outlook.com",
   },
 } as const;
 

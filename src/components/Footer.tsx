@@ -29,6 +29,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <span className="text-muted">{dict.common.insideCullinan}</span><br />
             {site.venue.street}<br />{site.venue.city} {site.venue.postcode}
           </address>
+          <p className="mt-4 space-y-1 text-[15px]">
+            <a className="link-underline block w-fit" href={site.contact.phoneHref}>{site.contact.phone}</a>
+            <a className="link-underline block w-fit break-all" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+          </p>
           <Link className="link-underline mt-4 inline-block text-[15px]" href={href(locale, "/contact")}>{dict.cta.directions}</Link>
         </div>
         <div className="md:col-span-3">

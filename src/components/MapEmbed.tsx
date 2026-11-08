@@ -5,7 +5,7 @@ import { useState } from "react";
 export function MapEmbed({ src, title, cta, note }: { src: string; title: string; cta: string; note: string }) {
   const [on, setOn] = useState(false);
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden bg-cream md:aspect-auto md:h-full md:min-h-[420px]">
+    <div className="relative aspect-[4/3] w-full overflow-hidden bg-cream">
       {on ? (
         <iframe src={src} title={title} className="absolute inset-0 h-full w-full grayscale-[.4] sepia-[.2]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
       ) : (

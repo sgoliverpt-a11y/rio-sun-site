@@ -29,6 +29,7 @@ export default async function TreatmentsPage({ params }: Props) {
             <a key={c.id} href={`#${c.id}`} className="rounded-full border border-line px-4 py-2 text-[12px] tracking-[.12em] uppercase transition-colors hover:bg-gold-300 hover:text-burgundy-900">{t(c.name, locale)}</a>
           ))}
         </nav>
+        <Link href={href(locale, "/find-your-treatment")} className="eyebrow link-underline mt-8 inline-block text-gold-300">{dict.home.treatments.quiz}</Link>
       </PageHero>
 
       <div data-header="light" className="surface-light">
