@@ -48,7 +48,7 @@ export default async function OurStory({ params }: Props) {
           <div className="mt-10 grid gap-14 md:grid-cols-2">
             {team.map((m, i) => (
               <article key={m.id} className={i === 1 ? "md:mt-24" : ""}>
-                <div className="overflow-hidden" data-reveal="fan" data-fan={i ? "r" : undefined}><Media id={m.portrait} locale={locale} tone="dark" /></div>
+                <div className="overflow-hidden" data-reveal="fan" data-fan={i ? "r" : undefined}><Media id={m.portrait} locale={locale} tone="dark" focus="50% 10%" /></div>
                 <h3 className="display-md mt-8 text-burgundy-800">{m.name}</h3>
                 <ul className="mt-5 space-y-2 text-[16px]">
                   {m.facts[locale].map((f) => <li key={f} className="flex gap-3"><span aria-hidden className="text-accent">—</span>{f}</li>)}

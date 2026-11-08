@@ -169,7 +169,7 @@ export function Story({ locale, dict }: P) {
           {[marcia, isabella].map((m, i) => (
             <figure key={m.id} className={i === 0 ? "md:col-span-4 md:col-start-2" : "mt-[20vw] md:col-span-4 md:col-start-8 md:mt-[12vw]"}>
               <div data-reveal="fan" data-fan={i ? "r" : undefined} data-reveal-delay={String(i)}>
-                <Media id={m.portrait} locale={locale} tone="dark" shape="arch" focus={i === 0 ? "52% 38%" : "48% 38%"} light={i === 0 ? "left" : "right"} />
+                <Media id={m.portrait} locale={locale} tone="dark" shape="arch" focus="50% 6%" light={i === 0 ? "left" : "right"} />
               </div>
               <figcaption className="mt-6 md:mt-8">
                 <p className="font-display text-[clamp(1.45rem,2.1vw,2.15rem)] leading-[1] text-burgundy-800">{m.fullName}</p>

@@ -57,13 +57,15 @@ export const assets = a({
   },
   MARCIA_PORTRAIT: {
     kind: "image", ratio: 4 / 5,
-    alt: { en: "Portrait of Marcia", "pt-br": "Retrato de Marcia" },
-    brief: "Single portrait, same session as the double portrait.",
+    src: "/media/marcia-portrait.webp",
+    alt: { en: "Marcia Braga, smiling, in the Rio Sun treatment room", "pt-br": "Marcia Braga, sorrindo, na sala de atendimento da Rio Sun" },
+    brief: "Single portrait (supplied 2026-11-08, 1024×1536).",
   },
   ISABELLA_PORTRAIT: {
     kind: "image", ratio: 4 / 5,
-    alt: { en: "Portrait of Isabella", "pt-br": "Retrato de Isabella" },
-    brief: "Single portrait, same session as the double portrait.",
+    src: "/media/isabella-portrait.webp",
+    alt: { en: "Isabella Braga, smiling, in the Rio Sun treatment room", "pt-br": "Isabella Braga, sorrindo, na sala de atendimento da Rio Sun" },
+    brief: "Single portrait (supplied 2026-11-08, 1024×1536).",
   },
   LYMPHATIC_TREATMENT_VIDEO: {
     kind: "video", ratio: 4 / 5,
