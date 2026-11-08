@@ -84,6 +84,13 @@ export function TreatmentGallery({ items, locale, dict }: { items: Treatment[]; 
     const up = () => { if (!drag) return; const moved = drag.moved; drag = null; el.classList.remove("is-dragging"); if (moved) el.addEventListener("click", stop, { capture: true, once: true }); };
     const stop = (e: Event) => { e.preventDefault(); e.stopPropagation(); };
 
+    // the cards fan in together as soon as the section arrives (not one by one as the rail
+    // slides sideways, which left half-rotated, clipped cards mid-scroll)
+    const fanIn = new IntersectionObserver((es) => {
+      if (es.some((e) => e.isIntersecting)) { cards.forEach((c) => c.classList.add("is-in")); fanIn.disconnect(); }
+    }, { rootMargin: "0px 0px -15% 0px" });
+    fanIn.observe(el);
+
     const onResize = () => { layout(); onPage(); measure(); };
     if (linked) tr.classList.add("is-linked");
     layout();
@@ -95,7 +102,7 @@ export function TreatmentGallery({ items, locale, dict }: { items: Treatment[]; 
     addEventListener("resize", onResize);
     onPage(); measure();
     return () => {
-      cancelAnimationFrame(raf); tr.classList.remove("is-linked");
+      cancelAnimationFrame(raf); fanIn.disconnect(); tr.classList.remove("is-linked");
       el.removeEventListener("scroll", onRail); el.removeEventListener("pointerdown", down);
       removeEventListener("pointermove", move); removeEventListener("pointerup", up);
       removeEventListener("scroll", onPage); removeEventListener("resize", onResize);
