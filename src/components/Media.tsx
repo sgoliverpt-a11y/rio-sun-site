@@ -23,7 +23,7 @@ export function Media({
   const alt = t(a.alt, locale);
   const ratioStyle = fill ? undefined : ({ ["--r" as string]: String(a.ratio), ["--r-m" as string]: String(a.ratioMobile ?? a.ratio) } as React.CSSProperties);
   const shapeCls = shape === "arch" ? "rounded-t-[9999px]" : "";
-  const box = `relative overflow-hidden ${shapeCls} ${fill ? "absolute inset-0" : "w-full [aspect-ratio:var(--r)] max-md:[aspect-ratio:var(--r-m)]"} ${className}`;
+  const box = `overflow-hidden ${shapeCls} ${fill ? "absolute inset-0" : "relative w-full [aspect-ratio:var(--r)] max-md:[aspect-ratio:var(--r-m)]"} ${className}`;
 
   if (a.src) {
     if (a.kind === "video") {

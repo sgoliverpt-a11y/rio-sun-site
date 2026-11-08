@@ -86,7 +86,7 @@ body {
 }
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 560;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -197,6 +197,14 @@ html.js [data-reveal="mask-x"]:not(.is-in) { clip-path: inset(0 100% 0 0); }
   [data-reveal] { transition: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; }
 }
 
+/* ── Official bands (BrandBands): Brand Lab draw-on, approved timing ── */
+.bd { stroke-dasharray: 1; stroke-dashoffset: 0; }
+[data-reveal="draw"] .bd { transition: stroke-dashoffset var(--d) cubic-bezier(.65,0,.35,1) var(--t); }
+html.js [data-reveal="draw"]:not(.is-in) .bd { stroke-dashoffset: 1; }
+.hero-bands .bd { animation: band-draw var(--d) cubic-bezier(.65,0,.35,1) both; animation-delay: calc(var(--after-intro, 3.9s) + .2s + var(--t)); }
+@keyframes band-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .bd { transition: none !important; animation: none !important; stroke-dashoffset: 0 !important; } }
+
 /* ── Hero logo reveal: mirrors the approved motion timing ──
    0–2.4s  bands + arc reveal left → right (light sweep)
    2.6–3.6s wordmark fades up
@@ -251,12 +259,10 @@ html.review-mode [data-draft]::before {
 
 /* Hero entrance after the intro (one orchestrated moment) */
 .hero-window { animation: hero-window 1.6s var(--ease-silk) both; animation-delay: var(--after-intro, 3.9s); }
-.hero-bands { animation: hero-bands 2s var(--ease-sweep) both; animation-delay: calc(var(--after-intro, 3.9s) + .35s); }
 .hero-word { animation: hero-word 1.3s var(--ease-silk) both; animation-delay: calc(var(--after-intro, 3.9s) + .15s); }
 .hero-word-2 { animation-delay: calc(var(--after-intro, 3.9s) + .3s); }
 html.intro-done { --after-intro: .15s; }
 @keyframes hero-window { from { clip-path: inset(100% 0 0 0 round 9999px 9999px 0 0); transform: translateY(4vh); } to { clip-path: inset(0 0 0 0 round 9999px 9999px 0 0); transform: none; } }
-@keyframes hero-bands { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes hero-word { from { opacity: 0; transform: translateY(.18em); } to { opacity: 1; transform: none; } }
 
 /* Intro overlay: the approved logo motion, then the curtain lifts */
@@ -266,7 +272,7 @@ html.intro-done .intro { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none; }
-  .hero-window, .hero-bands, .hero-word { animation: none; }
+  .hero-window, .hero-word { animation: none; }
 }
 
 } /* end @layer components */

@@ -5,7 +5,6 @@ import { categories, featured, byCategory } from "@/content/catalogue";
 import { reviews, faqs } from "@/content/people-reviews";
 import { site } from "@/content/site";
 import { Media } from "@/components/Media";
-import { Bands } from "@/components/Bands";
 import { ButtonLink, ChapterLabel, SplitHeading } from "@/components/ui";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { ReviewCard, RatingBadges } from "@/components/ReviewCard";
