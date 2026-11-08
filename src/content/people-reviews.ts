@@ -3,13 +3,14 @@ import type { Platform } from "./site";
 
 /**
  * TEAM — only facts stated on the official Treatwell profile (captured 2026-11-08).
- * Who is the mother and who is the daughter is NOT stated on any platform:
- * the site says "mother and daughter" for the pair without assigning roles until confirmed.
+ * Roles confirmed by the client (Sergio, 2026-11-08): Marcia Braga = mother, Isabella Braga = daughter.
  */
 export const team = [
   {
     id: "marcia",
     name: "Marcia",
+    fullName: "Marcia Braga",
+    role: { en: "Mother", "pt-br": "Mãe" },
     portrait: "MARCIA_PORTRAIT" as const,
     facts: {
       en: ["Originally from Brazil", "Over 12 years' experience", "Specialised in lymphatic drainage massage"],
@@ -20,6 +21,8 @@ export const team = [
   {
     id: "isabella",
     name: "Isabella",
+    fullName: "Isabella Braga",
+    role: { en: "Daughter", "pt-br": "Filha" },
     portrait: "ISABELLA_PORTRAIT" as const,
     facts: {
       en: ["Around 6 years' experience in Brazil and London", "Combines therapeutic and relaxation techniques"],

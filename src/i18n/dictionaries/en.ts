@@ -47,6 +47,10 @@ const en = {
     hero: {
       eyebrow: "Fulham Road · London",
       title: ["The Art of", "Brazilian Touch"],
+      kicker: "The art of",
+      words: ["Brazilian", "Touch"],
+      where: ["Inside Cullinan Clinic", "659 Fulham Road, London"],
+      intro: "Skip intro",
       lede: "Lymphatic drainage, sculpting massage and facial care, performed by hand, by a mother and daughter from Brazil.",
     },
     philosophy: {
@@ -68,6 +72,7 @@ const en = {
       title: ["Two Generations.", "One Philosophy."],
       body: "Rio Sun is a mother-and-daughter practice. Marcia and Isabella share the same method, the same standards and the same belief that good care is felt in the details.",
       note: "Two hands, two generations, one way of working.",
+      trajectories: "Two paths, one practice",
     },
     treatments: {
       label: "Treatments",

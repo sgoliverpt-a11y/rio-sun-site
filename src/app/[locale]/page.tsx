@@ -1,7 +1,8 @@
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMeta } from "@/lib/seo";
-import { Hero, Philosophy, Story, Treatments, Expertise, Experience, Invitation } from "@/components/home/Chapters";
+import { Treatments, Expertise, Experience, Invitation } from "@/components/home/Chapters";
+import { IntroOverlay, Hero, Philosophy, Story } from "@/components/home/Opening";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -17,6 +18,7 @@ export default async function Home({ params }: Props) {
   const p = { locale, dict };
   return (
     <>
+      <IntroOverlay label={dict.home.hero.intro} />
       <Hero {...p} />
       <Philosophy {...p} />
       <Story {...p} />

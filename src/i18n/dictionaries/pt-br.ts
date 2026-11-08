@@ -49,6 +49,10 @@ const ptBR: Dictionary = {
     hero: {
       eyebrow: "Fulham Road · Londres",
       title: ["A Arte do", "Toque Brasileiro"],
+      kicker: "A arte do",
+      words: ["Toque", "Brasileiro"],
+      where: ["Dentro da Cullinan Clinic", "659 Fulham Road, Londres"],
+      intro: "Pular introdução",
       lede: "Drenagem linfática, massagem modeladora e cuidados faciais, feitos à mão por mãe e filha brasileiras.",
     },
     philosophy: {
@@ -70,6 +74,7 @@ const ptBR: Dictionary = {
       title: ["Duas Gerações.", "Uma Filosofia."],
       body: "A Rio Sun é conduzida por mãe e filha. Marcia e Isabella compartilham o mesmo método, o mesmo padrão e a mesma convicção de que o bom cuidado se percebe nos detalhes.",
       note: "Duas mãos, duas gerações, uma forma de cuidar.",
+      trajectories: "Dois caminhos, uma prática",
     },
     treatments: {
       label: "Tratamentos",
