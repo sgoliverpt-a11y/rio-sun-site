@@ -47,7 +47,7 @@ export default async function TreatmentDetail({ params }: Props) {
               <span aria-hidden className="mx-3">/</span>
               <Link href={href(locale, "/treatments") + `#${cat.id}`} className="link-underline">{t(cat.name, locale)}</Link>
             </nav>
-            <SplitHeading as="h1" lines={[t(tr.name, locale)]} className="display-lg mt-8 md:!text-[clamp(2.5rem,4.4vw,4.5rem)]" />
+            <SplitHeading as="h1" lines={[t(tr.name, locale)]} className="display-lg mt-8 md:!text-[clamp(2.2rem,3.6vw,3.7rem)]" />
             <p className="lede mt-8 max-w-xl text-muted" data-reveal="fade">{t(tr.summary, locale)}</p>
 
             <dl className="mt-10 grid max-w-xl grid-cols-2 gap-px overflow-hidden border-y border-line" data-status={tr.status} data-review-note={reviewNote(tr)}>

@@ -47,8 +47,8 @@ export function IntroOverlay({ label }: { label: string }) {
    over text; the bands only cross the image. */
 export function Hero({ locale, dict }: P) {
   const h = dict.home.hero;
-  const d = wordSizing(h.words, 9.6, 54);
-  const m = wordSizing(h.words, 16, 90, 0.18);
+  const d = wordSizing(h.words, 7.6, 50);
+  const m = wordSizing(h.words, 13.5, 86, 0.18);
   return (
     <section data-chapter="01" data-header="dark" aria-label={h.title.join(" ")}
       className="hero surface-dark grain relative overflow-hidden md:h-[max(100svh,720px)]"
@@ -73,7 +73,7 @@ export function Hero({ locale, dict }: P) {
       {/* title → lede → actions, one reading column */}
       <div className="gutter relative z-10 mx-auto max-w-[1600px] max-md:pb-12 max-md:pt-8 md:flex md:h-full md:flex-col md:justify-end md:pb-[9svh]">
         <h1 className="font-display leading-[.86] tracking-[-0.03em]">
-          <span className="mb-[.4em] block font-display text-[clamp(1.3rem,1.9vw,1.9rem)] italic tracking-normal text-gold-300">{h.kicker}</span>
+          <span className="mb-[.4em] block font-display text-[clamp(1.2rem,1.6vw,1.6rem)] italic tracking-normal text-gold-300">{h.kicker}</span>
           <span className="hero-word block text-ivory">{h.words[0]}</span>
           <span className="hero-word hero-word-2 block italic text-gold-metal pr-[.06em]">{h.words[1]}</span>
         </h1>
@@ -104,7 +104,7 @@ export function Philosophy({ locale, dict }: P) {
       <div data-header="dark" className="surface-dark grain relative pb-[22vh] pt-[14vh] md:pb-[26vh] md:pt-[18vh]">
         <div className="gutter mx-auto max-w-[1600px]">
           <ChapterLabel n="02">{p.label}</ChapterLabel>
-          <p className="mt-10 max-w-[20ch] font-display text-[clamp(1.9rem,3.7vw,3.9rem)] leading-[1.1] tracking-[-0.015em] md:mt-14 md:max-w-[24ch]" data-draft data-review-note="DRAFT COPY: brand voice, to be approved">
+          <p className="mt-10 max-w-[20ch] font-display text-[clamp(1.65rem,3vw,3.2rem)] leading-[1.1] tracking-[-0.015em] md:mt-14 md:max-w-[24ch]" data-draft data-review-note="DRAFT COPY: brand voice, to be approved">
             <span data-reveal="fade" className="block">{s1}</span>
             <span data-reveal="fade" data-reveal-delay="1" className="mt-[.3em] block italic text-gold-300">{rest.join(" ")}</span>
           </p>
@@ -125,7 +125,7 @@ export function Philosophy({ locale, dict }: P) {
         </div>
 
         <div className="gutter mx-auto max-w-[1600px] max-md:-mt-[12vw] md:pt-[13vw]">
-          <h2 id="ch-philosophy" className="font-display text-[clamp(3.2rem,8vw,8.75rem)] leading-[.9] tracking-[-0.035em] text-burgundy-800 md:max-w-[62vw]">
+          <h2 id="ch-philosophy" className="font-display text-[clamp(2.7rem,6.2vw,6.8rem)] leading-[.9] tracking-[-0.035em] text-burgundy-800 md:max-w-[62vw]">
             <span className="block overflow-hidden pb-[.06em]"><span className="block" data-reveal="mask">{p.title.split(" ")[0]}</span></span>
             <span className="block overflow-hidden pb-[.08em] pl-[10vw] md:pl-[9vw]"><span className="block italic" data-reveal="mask" data-reveal-delay="1">{p.title.split(" ").slice(1).join(" ")}</span></span>
           </h2>
@@ -160,8 +160,8 @@ export function Story({ locale, dict }: P) {
       <div className="gutter mx-auto max-w-[1600px]">
         <ChapterLabel n="03">{s.label}</ChapterLabel>
         <h2 id="ch-story" className="mt-8 font-display leading-[.92] tracking-[-0.03em]">
-          <span className="block overflow-hidden pb-[.06em] text-[clamp(2.9rem,7vw,7.5rem)] text-burgundy-800"><span className="block" data-reveal="mask">{s.title[0]}</span></span>
-          <span className="block overflow-hidden pb-[.1em] pl-[8vw] text-[clamp(2rem,4.2vw,4.5rem)] italic text-gold-metal md:pl-[22vw]"><span className="block pr-[.08em]" data-reveal="mask" data-reveal-delay="1">{s.title[1]}</span></span>
+          <span className="block overflow-hidden pb-[.06em] text-[clamp(2.5rem,5.5vw,5.9rem)] text-burgundy-800"><span className="block" data-reveal="mask">{s.title[0]}</span></span>
+          <span className="block overflow-hidden pb-[.1em] pl-[8vw] text-[clamp(1.75rem,3.3vw,3.5rem)] italic text-gold-metal md:pl-[22vw]"><span className="block pr-[.08em]" data-reveal="mask" data-reveal-delay="1">{s.title[1]}</span></span>
         </h2>
 
         {/* two paths: two arches, staggered, joined by the bands */}
@@ -172,7 +172,7 @@ export function Story({ locale, dict }: P) {
                 <Media id={m.portrait} locale={locale} tone="dark" shape="arch" focus={i === 0 ? "52% 38%" : "48% 38%"} light={i === 0 ? "left" : "right"} />
               </div>
               <figcaption className="mt-6 md:mt-8">
-                <p className="font-display text-[clamp(1.6rem,2.6vw,2.6rem)] leading-[1] text-burgundy-800">{m.fullName}</p>
+                <p className="font-display text-[clamp(1.45rem,2.1vw,2.15rem)] leading-[1] text-burgundy-800">{m.fullName}</p>
                 <p className="eyebrow mt-3 text-accent">{m.role[locale]}</p>
                 <ul className="mt-4 space-y-1.5 text-[15px] leading-snug text-muted md:text-[16px]">
                   {m.facts[locale].map((f) => <li key={f}>{f}</li>)}
@@ -194,7 +194,7 @@ export function Story({ locale, dict }: P) {
         <div data-reveal="mask" className="relative">
           <Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" focus="50% 42%" light="left" brief className="max-h-[88svh]" />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(28,1,7,.75)_0%,rgba(28,1,7,.2)_55%,transparent)]" />
-          <p className="gutter absolute left-0 top-1/2 max-w-[18ch] -translate-y-1/2 font-display text-[clamp(1.6rem,3.4vw,3.6rem)] italic leading-[1.08] text-ivory md:max-w-[16ch]">{s.note}</p>
+          <p className="gutter absolute left-0 top-1/2 max-w-[18ch] -translate-y-1/2 font-display text-[clamp(1.45rem,2.7vw,2.9rem)] italic leading-[1.08] text-ivory md:max-w-[16ch]">{s.note}</p>
         </div>
       </div>
 
