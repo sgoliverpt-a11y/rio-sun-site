@@ -10,7 +10,7 @@ Outputs (public/brand/layers/):
 Run: python3 scripts/separate-logo.py
 """
 import json, numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
 SRC = "public/brand/rio-sun-symbol-gold.webp"
 OUT = "public/brand/layers/"
@@ -52,18 +52,64 @@ _M = np.c_[2 * _xx, 2 * _yy, np.ones_like(_xx)]; _cx, _cy, _c = np.linalg.lstsq(
 _r = np.sqrt(_c + _cx**2 + _cy**2)
 _d = np.sqrt((xs - _cx) ** 2 + (ys - _cy) ** 2); _ang = np.degrees(np.arctan2(ys - _cy, xs - _cx))
 arc |= (np.abs(_d - _r) < 16) & (_ang > -172) & (_ang < -120) & (ys < 137)
+# the arc's foot: the short stub between the arc's end and the lower band's top edge
+# (measured top edge under the foot: y≈231 at x=722 → y≈221 at x=746). It belongs to the arc;
+# left in the band layer it shows as a broken spike when the bands are used without the arc.
+stub = (xs >= 726) & (xs <= 744) & (ys >= 200) & (ys < 230 - (xs - 722) * 10 / 24)
+stub &= np.array(Image.fromarray(((alpha >= 200) * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(3))) > 0
+arc_fit = arc.copy()
+arc |= stub
 # 3) bands: split on the gap midline; past the merge the ribbon is the lower band's tail
 MERGE = 770
 upper = (~arc) & (((xs < 240) & (ys < 262)) | ((xs >= 240) & (xs < MERGE) & (ys < gap(xs))))
 lower = (~arc) & (~upper)
 
-def save(mask, name):
-    out = A.copy(); out[..., 3] = (A[..., 3] * mask).astype(np.uint8)
-    Image.fromarray(out, "RGBA").save(OUT + name, quality=92)
+foot_box = (xs >= 726) & (xs <= 744) & (ys >= 195) & (ys < 230 - (xs - 722) * 10 / 24)
+
+def layer(mask, fill_stub=False):
+    out = A.astype(float).copy(); out[..., 3] = A[..., 3] * mask
+    if fill_stub:
+        # the soft glow the arc's foot sat on: carried across the foot row by row,
+        # so the bands used without the arc show neither a spike nor a hole
+        for y in np.unique(np.nonzero(foot_box)[0]):
+            cols = np.nonzero(foot_box[y])[0]; x0, x1 = 725, 745
+            for x in cols:
+                t = (x - x0) / (x1 - x0); out[y, x] = out[y, x0] * (1 - t) + out[y, x1] * t
     return out
 
+def save(arr, name):
+    Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), "RGBA").save(OUT + name, quality=92)
+
 import os; os.makedirs(OUT, exist_ok=True)
-save(upper, "band-upper.webp"); save(lower, "band-lower.webp"); save(arc, "sun-arc.webp")
+L_up, L_lo, L_arc = layer(upper), layer(lower, fill_stub=True), layer(arc)
+save(L_up, "band-upper.webp"); save(L_lo, "band-lower.webp"); save(L_arc, "sun-arc.webp")
+
+# 3b) light-surface variants: the original art carries a soft copper halo, made for the
+# burgundy background; on ivory/cream it reads as a smudge. The *-light layers fade only
+# that halo: translucent, copper-toned pixels reachable from the empty background.
+# Opaque metal, gold-toned translucent ribbon and the anti-aliased edges are untouched.
+def mf(m, k, op): return np.array(Image.fromarray((m * 255).astype(np.uint8)).filter(op(k))) > 0
+opaque = alpha >= 250
+# seal the small gaps in the metal's outline so the flood cannot leak into the
+# translucent body of the ribbons (that translucency is part of the material)
+barrier = mf(mf(opaque, 9, ImageFilter.MaxFilter), 9, ImageFilter.MinFilter)
+edge = mf(opaque, 3, ImageFilter.MaxFilter)          # 1px anti-aliasing stays
+free = ~barrier & ~edge
+reach = alpha == 0
+while True:
+    nxt = reach | (mf(reach, 3, ImageFilter.MaxFilter) & free)
+    if (nxt == reach).all(): break
+    reach = nxt
+w = (reach & (alpha > 0) & free).astype(float)
+w = np.array(Image.fromarray((w * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.0))) / 255.0
+w *= ~edge
+# the glow inside the lower ribbon where it folds under the upper one is translucent material, keep it
+w[235:315, 500:705] = 0
+print("halo pixels faded in light variants:", int((w > 0.05).sum()))
+for arr, name in ((L_up, "band-upper-light.webp"), (L_lo, "band-lower-light.webp"), (L_arc, "sun-arc-light.webp")):
+    o = arr.copy(); o[..., 3] *= (1 - w)
+    if arr is L_lo: o[..., 3] *= ~foot_box   # the glow carried across the arc's foot is halo too
+    save(o, name)
 
 # 4) vector centrelines (weighted by alpha)
 def centreline(mask, x0, x1, step=6):
@@ -87,7 +133,7 @@ def smooth_path(pts):
 up_pts = centreline(upper, 20, MERGE + 40)
 lo_pts = centreline(lower, 230, 1000)
 # arc: least-squares circle fit on arc pixels, path along the visible sweep
-yy, xx = np.nonzero(arc & solid)
+yy, xx = np.nonzero(arc_fit & solid)
 Am = np.c_[2 * xx, 2 * yy, np.ones_like(xx)]; bm = xx**2 + yy**2
 cx, cy, c = np.linalg.lstsq(Am, bm, rcond=None)[0]; r = float(np.sqrt(c + cx**2 + cy**2))
 ang = np.degrees(np.arctan2(yy - cy, xx - cx))
@@ -100,7 +146,7 @@ s = np.sort(ang); gaps = np.diff(np.r_[s, s[0] + 360]); i = int(np.argmax(gaps))
 start = s[(i + 1) % len(s)]; end = s[i] + (360 if s[i] < start else 0)
 P0, P1 = pt(start), pt(end)
 large = 1 if (end - start) > 180 else 0
-arc_d = f"M{P0[0]:.1f},{P0[1]:.1f} A{r:.1f},{r:.1f} 0 {large} 1 {P1[0]:.1f},{P1[1]:.1f}"
+arc_d = f"M{P0[0]:.1f},{P0[1]:.1f} A{r:.1f},{r:.1f} 0 {large} 1 {P1[0]:.1f},{P1[1]:.1f} L734.5,231.0"
 
 paths = {
     "viewBox": f"0 0 {W} {H}",

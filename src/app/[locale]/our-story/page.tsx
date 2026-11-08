@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 import { team } from "@/content/people-reviews";
 import { PageHero } from "@/components/PageHero";
 import { Media } from "@/components/Media";
-import { Bands } from "@/components/Bands";
+import { BrandBands } from "@/components/brand/BrandBands";
 import { ButtonLink } from "@/components/ui";
 import { href } from "@/i18n/config";
 import { site } from "@/content/site";
@@ -39,7 +39,7 @@ export default async function OurStory({ params }: Props) {
             ))}
           </div>
         </div>
-        <Bands moment="connection" className="mx-auto h-40 w-[80%] md:h-64" />
+        <div aria-hidden data-bands="connection" className="pointer-events-none mx-auto w-[min(80%,720px)]"><BrandBands uid="our-story" arc draw shadow="none" surface="light" /></div>
       </section>
 
       <section data-header="light" className="surface-light">

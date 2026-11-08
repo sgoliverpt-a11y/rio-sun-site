@@ -9,6 +9,8 @@ import paths from "../../../public/brand/layers/paths.json";
  * - arc=true  → full symbol incl. solar arc: identity moments only (opening, closing).
  * - draw      → draws on once when it enters the viewport, with the approved Brand Lab
  *               timing (upper 0.2s/1.7s, lower 0.6s/1.7s, arc 1.3s/1.4s). Static otherwise.
+ * - surface   → "light" uses the *-light layers: same pixels minus the soft copper halo
+ *               the artwork carries for its burgundy background (reads as a smudge on ivory).
  * data-band="upper|lower|arc" are the hooks for BUILD 02 (GSAP) choreography.
  */
 const L = "/brand/layers/";
@@ -22,11 +24,11 @@ const LAYERS = [
 const BANDS_VIEWBOX = "0 118 1010 206";
 
 export function BrandBands({
-  uid, arc = false, draw = false, className = "", shadow = "dark", delay = 0,
+  uid, arc = false, draw = false, className = "", shadow = "dark", delay = 0, surface = "dark",
 }: {
   /** unique per page: used for mask ids */
   uid: string; arc?: boolean; draw?: boolean; className?: string;
-  shadow?: "dark" | "soft" | "none"; delay?: number;
+  shadow?: "dark" | "soft" | "none"; delay?: number; surface?: "dark" | "light";
 }) {
   const list = arc ? LAYERS : LAYERS.filter((l) => l.id !== "sunArc");
   const filter = shadow === "dark" ? "drop-shadow(0 1.6vw 2.4vw rgba(20,0,6,.5))" : shadow === "soft" ? "drop-shadow(0 1.2vw 1.8vw rgba(63,0,11,.22))" : undefined;
@@ -42,7 +44,7 @@ export function BrandBands({
         ))}
       </defs>
       {list.map((l) => (
-        <image key={l.id} data-band={l.band} href={L + l.file} width="1010" height="330" mask={`url(#${uid}-${l.id})`} />
+        <image key={l.id} data-band={l.band} href={L + (surface === "light" ? l.file.replace(".webp", "-light.webp") : l.file)} width="1010" height="330" mask={`url(#${uid}-${l.id})`} />
       ))}
     </svg>
   );

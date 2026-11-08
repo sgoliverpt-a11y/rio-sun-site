@@ -201,7 +201,7 @@ html.js [data-reveal="mask-x"]:not(.is-in) { clip-path: inset(0 100% 0 0); }
 .bd { stroke-dasharray: 1; stroke-dashoffset: 0; }
 [data-reveal="draw"] .bd { transition: stroke-dashoffset var(--d) cubic-bezier(.65,0,.35,1) var(--t); }
 html.js [data-reveal="draw"]:not(.is-in) .bd { stroke-dashoffset: 1; }
-.hero-bands .bd { animation: band-draw var(--d) cubic-bezier(.65,0,.35,1) both; animation-delay: calc(var(--after-intro, 3.9s) + .2s + var(--t)); }
+.hero-bands .bd { animation: band-draw var(--d) cubic-bezier(.65,0,.35,1) both; animation-delay: calc(var(--after-intro, 3.7s) + .6s + var(--t)); }
 @keyframes band-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .bd { transition: none !important; animation: none !important; stroke-dashoffset: 0 !important; } }
 
@@ -258,21 +258,27 @@ html.review-mode [data-draft]::before {
 .hero .text-gold-metal { filter: drop-shadow(0 .04em .08em rgba(20,0,6,.45)); }
 
 /* Hero entrance after the intro (one orchestrated moment) */
-.hero-window { animation: hero-window 1.6s var(--ease-silk) both; animation-delay: var(--after-intro, 3.9s); }
-.hero-word { animation: hero-word 1.3s var(--ease-silk) both; animation-delay: calc(var(--after-intro, 3.9s) + .15s); }
-.hero-word-2 { animation-delay: calc(var(--after-intro, 3.9s) + .3s); }
+/* The intro dissolves (3.4s → 5.2s) while the hero rises underneath: one continuous
+   cross-fade on the same burgundy, no cut. */
+.hero-window { animation: hero-window 2.4s var(--ease-silk) both; animation-delay: var(--after-intro, 3.7s); }
+.hero-word { animation: hero-word 2s var(--ease-silk) both; animation-delay: calc(var(--after-intro, 3.7s) + .25s); }
+.hero-word-2 { animation-delay: calc(var(--after-intro, 3.7s) + .5s); }
+.hero-rest { animation: hero-rest 1.8s var(--ease-silk) both; animation-delay: calc(var(--after-intro, 3.7s) + 1s); }
+@keyframes hero-rest { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 html.intro-done { --after-intro: .15s; }
-@keyframes hero-window { from { clip-path: inset(100% 0 0 0 round 9999px 9999px 0 0); transform: translateY(4vh); } to { clip-path: inset(0 0 0 0 round 9999px 9999px 0 0); transform: none; } }
-@keyframes hero-word { from { opacity: 0; transform: translateY(.18em); } to { opacity: 1; transform: none; } }
+@keyframes hero-window { from { clip-path: inset(100% 0 0 0 round 9999px 9999px 0 0); transform: translateY(3vh); opacity: 0; } to { clip-path: inset(0 0 0 0 round 9999px 9999px 0 0); transform: none; opacity: 1; } }
+@keyframes hero-word { from { opacity: 0; transform: translateY(.12em); } to { opacity: 1; transform: none; } }
 
 /* Intro overlay: the approved logo motion, then the curtain lifts */
-.intro { animation: intro-out 1.1s var(--ease-sweep) 3.5s forwards; }
+.intro { animation: intro-out 1.8s cubic-bezier(.45,0,.25,1) 3.4s forwards; }
+.intro > * { animation: intro-drift 1.8s cubic-bezier(.45,0,.25,1) 3.4s forwards; }
+@keyframes intro-drift { to { transform: scale(1.035); filter: blur(3px); } }
 html.intro-done .intro { display: none; }
-@keyframes intro-out { to { clip-path: inset(0 0 100% 0); visibility: hidden; } }
+@keyframes intro-out { 0% { opacity: 1; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none; }
-  .hero-window, .hero-word { animation: none; }
+  .hero-window, .hero-word, .hero-rest { animation: none; }
 }
 
 } /* end @layer components */

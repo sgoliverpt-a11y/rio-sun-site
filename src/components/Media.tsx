@@ -22,7 +22,7 @@ export function Media({
   const a: Asset = assets[id];
   const alt = t(a.alt, locale);
   const ratioStyle = fill ? undefined : ({ ["--r" as string]: String(a.ratio), ["--r-m" as string]: String(a.ratioMobile ?? a.ratio) } as React.CSSProperties);
-  const shapeCls = shape === "arch" ? "rounded-t-[9999px]" : "";
+  const shapeCls = shape === "arch" ? "rounded-t-[9999px] [clip-path:inset(0_round_9999px_9999px_0_0)] isolate" : "";
   const box = `overflow-hidden ${shapeCls} ${fill ? "absolute inset-0" : "relative w-full [aspect-ratio:var(--r)] max-md:[aspect-ratio:var(--r-m)]"} ${className}`;
 
   if (a.src) {

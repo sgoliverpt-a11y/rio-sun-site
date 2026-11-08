@@ -77,7 +77,7 @@ export function Hero({ locale, dict }: P) {
           <span className="hero-word block text-ivory">{h.words[0]}</span>
           <span className="hero-word hero-word-2 block italic text-gold-metal pr-[.06em]">{h.words[1]}</span>
         </h1>
-        <div className="mt-9 md:mt-11" data-reveal="fade">
+        <div className="hero-rest mt-9 md:mt-11">
           <p className="lede max-w-[30rem] text-ivory/80">{h.lede}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
             <ButtonLink href={href(locale, "/booking")}>{dict.cta.book}</ButtonLink>
@@ -87,7 +87,7 @@ export function Hero({ locale, dict }: P) {
       </div>
 
       {/* location, quiet, under the window */}
-      <p className="absolute bottom-[3.5svh] right-[7vw] z-10 hidden w-[min(30vw,54svh)] text-center text-[14px] tracking-[.02em] text-muted md:block">
+      <p className="hero-rest absolute bottom-[3.5svh] right-[7vw] z-10 hidden w-[min(30vw,54svh)] text-center text-[14px] tracking-[.02em] text-muted md:block">
         {h.where[0]} · {h.where[1]}
       </p>
     </section>
@@ -115,7 +115,7 @@ export function Philosophy({ locale, dict }: P) {
       <div data-header="light" className="surface-light relative pb-28 md:pb-40">
         {/* SEAM — the bands carry the light from burgundy into ivory, toward the image */}
         <div data-bands="transition" className="pointer-events-none absolute left-[-8vw] top-0 z-20 w-[92vw] -translate-y-1/2 md:left-[-2vw] md:w-[62vw]">
-          <BrandBands uid="seam" draw shadow="soft" />
+          <BrandBands uid="seam" draw shadow="soft" surface="light" />
         </div>
         {/* the photograph straddles the seam: half night, half day */}
         <div className="gutter relative mx-auto max-w-[1600px]">
@@ -184,7 +184,7 @@ export function Story({ locale, dict }: P) {
           {/* the connection: the bands cross from one portrait to the other,
               at portrait height, never over names or facts */}
           <div data-bands="connection" className="pointer-events-none absolute left-[10%] top-[26%] z-10 w-[80%] md:left-[22%] md:top-[30%] md:w-[52%]">
-            <BrandBands uid="story" draw shadow="soft" />
+            <BrandBands uid="story" draw shadow="soft" surface="light" />
           </div>
         </div>
       </div>
