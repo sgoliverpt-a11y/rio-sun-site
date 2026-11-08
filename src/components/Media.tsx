@@ -32,7 +32,14 @@ export function Media({
       return (
         <div className={box} style={ratioStyle}>
           {/* autoplay is started by <VideoAutoplay/> only when visible and motion is allowed; the poster stays otherwise */}
-          <video className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }} muted loop={loop} playsInline preload="none" poster={a.poster} aria-label={alt} data-autoplay={loop ? "loop" : "once"}>
+          {/* the poster is a real image underneath; the video stays transparent until its first frame
+              is actually painting (VideoAutoplay sets data-live), so mobile browsers never flash black */}
+          {a.poster && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={a.poster} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }}
+              loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" />
+          )}
+          <video className="vid absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }} muted loop={loop} playsInline preload="none" poster={a.poster} aria-label={alt} data-autoplay={loop ? "loop" : "once"}>
             {a.srcMobile && <source src={a.srcMobile} media="(max-width: 767px)" />}
             <source src={a.src} />
           </video>

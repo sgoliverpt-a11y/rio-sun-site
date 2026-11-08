@@ -295,6 +295,10 @@ html.intro-done .intro { display: none !important; }
 }
 
 /* Quiz step change */
+/* video fades over its poster image only once frames are painting (no black flash on mobile) */
+html.js video.vid { opacity: 0; transition: opacity .5s ease; }
+html.js video.vid[data-live] { opacity: 1; }
+
 .quiz-step { animation: quiz-in .7s var(--ease-silk) both; }
 @keyframes quiz-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .quiz-step { animation: none; } }

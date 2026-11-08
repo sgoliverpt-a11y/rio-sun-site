@@ -35,7 +35,13 @@ export function VideoAutoplay() {
         else { visible.delete(v); v.pause(); if (v.played.length) left.add(v); }
       }
     }, { threshold: 0.15 });
-    vids.forEach((v) => { v.muted = true; io.observe(v); });
+    // reveal the video only once a real frame is on screen (poster image stays underneath until then)
+    const live = (v: HTMLVideoElement) => {
+      const show = () => { v.dataset.live = ""; };
+      const rv = (v as HTMLVideoElement & { requestVideoFrameCallback?: (cb: () => void) => number }).requestVideoFrameCallback;
+      if (rv) rv.call(v, show); else v.addEventListener("timeupdate", function f() { if (v.currentTime > 0.05) { v.removeEventListener("timeupdate", f); show(); } });
+    };
+    vids.forEach((v) => { v.muted = true; io.observe(v); v.addEventListener("playing", () => live(v), { once: true }); });
 
     let t: number | undefined;
     if (!ready) {
