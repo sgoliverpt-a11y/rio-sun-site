@@ -28,7 +28,7 @@ export default async function OurStory({ params }: Props) {
       <section data-header="light" className="surface-cream relative overflow-hidden">
         <div className="gutter mx-auto max-w-[1600px] py-20 md:py-28">
           <div className="overflow-hidden" data-reveal="fan" data-fan="soft">
-            <div data-parallax="0.1" className="scale-[1.1]"><Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" /></div>
+            <div data-parallax="0.1" className="scale-[1.1]"><Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" focus="50% 30%" /></div>
           </div>
           <div className="mt-20 grid gap-16 md:grid-cols-2 md:gap-24" data-draft data-review-note="DRAFT: story to be written with Marcia & Isabella">
             {[s.sections.origins, s.sections.method].map((x) => (

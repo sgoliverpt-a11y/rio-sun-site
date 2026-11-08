@@ -52,8 +52,9 @@ export const assets = a({
   },
   MOTHER_DAUGHTER_PORTRAIT: {
     kind: "image", ratio: 3 / 2, ratioMobile: 4 / 5,
-    alt: { en: "Marcia and Isabella, the mother-and-daughter team behind Rio Sun", "pt-br": "Marcia e Isabella, mãe e filha à frente da Rio Sun" },
-    brief: "Editorial double portrait. Burgundy / ivory wardrobe. Horizontal for desktop + vertical crop for mobile.",
+    src: "/media/mother-daughter.webp",
+    alt: { en: "Isabella and Marcia Braga, daughter and mother, back to back in their burgundy uniforms", "pt-br": "Isabella e Marcia Braga, filha e mãe, de costas uma para a outra com o uniforme bordô" },
+    brief: "Supplied 2026-11-08 (vertical original; cropped by focus).",
   },
   MARCIA_PORTRAIT: {
     kind: "image", ratio: 4 / 5,
@@ -93,13 +94,15 @@ export const assets = a({
   CLASSIC_MASSAGE_IMAGE: { kind: "image", ratio: 4 / 5, alt: { en: "Classic massage", "pt-br": "Massagem clássica" }, brief: "Back massage, wide editorial frame." },
   EXPERIENCE_ROOM_IMAGE: {
     kind: "image", ratio: 16 / 10, ratioMobile: 4 / 5,
+    src: "/media/treatment-room.webp",
     alt: { en: "The Rio Sun treatment room inside Cullinan Clinic", "pt-br": "A sala da Rio Sun dentro da Cullinan Clinic" },
-    brief: "Wide shot of the room as prepared for a client: bed, Rio Sun pillows, towels, light.",
+    brief: "Supplied 2026-11-08: treatment bed with the Rio Sun Therapy pillow.",
   },
   EXPERIENCE_TEA_IMAGE: {
     kind: "image", ratio: 1,
-    alt: { en: "Tea served after the treatment", "pt-br": "Chá servido após o tratamento" },
-    brief: "Detail of the hospitality ritual (only if it is part of the real experience).",
+    src: "/media/experience-tea.webp",
+    alt: { en: "Candles, a crystal and a pot of tea set out in the Rio Sun room", "pt-br": "Velas, um cristal e um bule de chá preparados na sala da Rio Sun" },
+    brief: "Supplied 2026-11-08: sideboard with candles, mirror and tea set.",
   },
   EXPERIENCE_TOWELS_IMAGE: {
     kind: "image", ratio: 4 / 5,
@@ -128,8 +131,9 @@ export const assets = a({
   },
   CONTACT_EXTERIOR_IMAGE: {
     kind: "image", ratio: 3 / 2,
-    alt: { en: "Cullinan Clinic entrance, 659 Fulham Road", "pt-br": "Entrada da Cullinan Clinic, 659 Fulham Road" },
-    brief: "Street-level photo of the entrance so clients recognise it on arrival.",
+    src: "/media/clinic-exterior.webp",
+    alt: { en: "The entrance of Cullinan Clinic at 659 Fulham Road, where Rio Sun has its room", "pt-br": "A entrada da Cullinan Clinic, no 659 da Fulham Road, onde fica a sala da Rio Sun" },
+    brief: "Supplied 2026-11-08: street-level entrance (vertical original; cropped by focus).",
   },
 });
 

@@ -57,7 +57,7 @@ export default async function Contact({ params }: Props) {
           </div>
           <div className="space-y-6 md:col-span-6 md:col-start-7">
             <MapEmbed src={site.venue.mapEmbed} title={c.mapTitle} cta={c.loadMap} note={c.mapConsent} />
-            <Media id="CONTACT_EXTERIOR_IMAGE" locale={locale} tone="light" />
+            <Media id="CONTACT_EXTERIOR_IMAGE" locale={locale} tone="light" focus="55% 50%" />
           </div>
         </div>
       </section>

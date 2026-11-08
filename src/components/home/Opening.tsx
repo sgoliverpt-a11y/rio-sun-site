@@ -192,7 +192,7 @@ export function Story({ locale, dict }: P) {
       {/* together: the double portrait, wide, with the line set over it */}
       <div className="relative mt-20 md:mt-28">
         <div data-reveal="fan" data-fan="soft" className="relative">
-          <Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" focus="50% 42%" light="left" brief className="max-h-[88svh]" />
+          <Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" focus="50% 30%" light="left" brief className="max-h-[88svh]" />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(28,1,7,.75)_0%,rgba(28,1,7,.2)_55%,transparent)]" />
           <p className="gutter absolute left-0 top-1/2 max-w-[18ch] -translate-y-1/2 font-display text-[clamp(1.45rem,2.7vw,2.9rem)] italic leading-[1.08] text-ivory md:max-w-[16ch]">{s.note}</p>
         </div>
