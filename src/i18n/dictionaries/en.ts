@@ -219,6 +219,7 @@ const en = {
   legal: {
     draft: "Draft for legal review. This text must be reviewed before launch.",
   },
+  sound: { on: "Turn background music on", off: "Turn background music off" },
   whatsapp: {
     label: "Chat with Rio Sun on WhatsApp",
     message: "Hello Rio Sun, I would like some information about a treatment.",

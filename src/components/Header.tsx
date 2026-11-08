@@ -6,6 +6,7 @@ import { href, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { SoundToggle } from "./SoundToggle";
 
 /**
  * Discreet header that adapts to the section underneath it.
@@ -82,6 +83,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </nav>
 
           <div className="relative z-10 flex items-center gap-3 sm:gap-5">
+            <SoundToggle on={dict.sound.on} off={dict.sound.off} />
             <LanguageSwitcher locale={locale} label={dict.nav.language} />
             <Link href={href(locale, "/booking")}
               className={`btn hidden sm:inline-flex !min-h-10 !px-5 ${dark ? "btn-gold" : "btn-burgundy"}`}>{dict.nav.book}</Link>

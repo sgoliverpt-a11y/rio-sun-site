@@ -221,6 +221,7 @@ const ptBR: Dictionary = {
   legal: {
     draft: "Rascunho para revisão jurídica. Este texto precisa ser revisado antes do lançamento.",
   },
+  sound: { on: "Ligar a música ambiente", off: "Desligar a música ambiente" },
   whatsapp: {
     label: "Conversar com a Rio Sun pelo WhatsApp",
     message: "Olá, Rio Sun! Gostaria de informações sobre um tratamento.",

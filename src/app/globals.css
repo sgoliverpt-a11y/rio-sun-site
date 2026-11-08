@@ -298,6 +298,13 @@ html.intro-done .intro { display: none !important; }
 }
 
 /* Quiz step change */
+/* sound toggle: bars breathe while the music plays */
+.sound-bar { transition: height .5s var(--ease-silk); }
+.sound-toggle.is-live .sound-bar { animation: sound-bar 1.6s ease-in-out infinite alternate; }
+@keyframes sound-bar { 0% { transform: scaleY(.45); } 100% { transform: scaleY(1); } }
+.sound-bar { transform-origin: bottom; }
+@media (prefers-reduced-motion: reduce) { .sound-toggle.is-live .sound-bar { animation: none; } }
+
 /* video fades over its poster image only once frames are painting (no black flash on mobile) */
 html.js video.vid { opacity: 0; transition: opacity .5s ease; }
 html.js video.vid[data-live] { opacity: 1; }
