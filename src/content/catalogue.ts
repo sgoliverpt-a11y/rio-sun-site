@@ -100,7 +100,7 @@ export const treatments: Treatment[] = [
     },
     featured: true,
     detail: true,
-    media: "LYMPHATIC_TREATMENT_VIDEO",
+    media: "LYMPHATIC_IMAGE",
     bookOn: ["fresha", "treatwell"],
   },
   {

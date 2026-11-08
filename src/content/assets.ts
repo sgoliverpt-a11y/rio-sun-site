@@ -68,10 +68,11 @@ export const assets = a({
     alt: { en: "Isabella Braga, smiling, in the Rio Sun treatment room", "pt-br": "Isabella Braga, sorrindo, na sala de atendimento da Rio Sun" },
     brief: "Single portrait (supplied 2026-11-08, 1024×1536).",
   },
-  LYMPHATIC_TREATMENT_VIDEO: {
-    kind: "video", ratio: 4 / 5,
-    alt: { en: "Brazilian lymphatic drainage in progress", "pt-br": "Drenagem linfática brasileira em andamento" },
-    brief: "6–8 s loop for the treatment card, 1080×1350, ≤ 1.5 MB, + poster.",
+  LYMPHATIC_IMAGE: {
+    kind: "image", ratio: 4 / 5,
+    src: "/media/treatment-lymphatic.webp",
+    alt: { en: "Hands performing a gentle lymphatic drainage on the abdomen", "pt-br": "Mãos fazendo uma drenagem linfática suave no abdômen" },
+    brief: "Supplied 2026-11-08 (1120×1405). A 6–8 s video can replace it later.",
   },
   BODY_SCULPTING_IMAGE: {
     kind: "image", ratio: 4 / 5,
