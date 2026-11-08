@@ -55,10 +55,15 @@ export default async function TreatmentsPage({ params }: Props) {
                 </div>
               </header>
               <ul className="md:col-span-8">
-                {byCategory(c.id).map((tr) => (
+                {byCategory(c.id).map((tr, i) => (
                   <li key={tr.slug} id={tr.slug} className="scroll-mt-24 border-t border-line py-8 first:border-t-0 first:pt-0 md:first:border-t md:first:pt-8"
                     data-status={tr.status} data-review-note={reviewNote(tr)}>
                     <div className="grid gap-6 sm:grid-cols-[120px_1fr] md:grid-cols-[140px_1fr]">
+                      {/* phones: a wide editorial card image that opens in a fan as it is reached */}
+                      <div className="relative aspect-[3/2] overflow-hidden sm:hidden" data-reveal="fan" data-fan={i % 2 ? "r" : undefined}>
+                        <Media id={tr.media} locale={locale} tone="dark" fill label={false} light={i % 2 ? "right" : "left"} />
+                        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(28,1,7,0)_50%,rgba(28,1,7,.5))]" />
+                      </div>
                       <div className="hidden sm:block" data-reveal="fan"><Media id={tr.media} locale={locale} tone="dark" label={false} /></div>
                       <div>
                         <h3 className="display-sm text-burgundy-800">
