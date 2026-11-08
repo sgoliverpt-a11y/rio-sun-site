@@ -120,7 +120,7 @@ export function Philosophy({ locale, dict }: P) {
         {/* the photograph straddles the seam: half night, half day */}
         <div className="gutter relative mx-auto max-w-[1600px]">
           <div data-reveal="fan" data-fan="r" className="relative z-10 ml-auto w-[56vw] -translate-y-[40%] md:absolute md:right-[calc(var(--gutter)+3vw)] md:top-0 md:w-[25vw] md:max-w-[440px] md:-translate-y-[62%]">
-            <Media id="PHILOSOPHY_HANDS_IMAGE" locale={locale} tone="dark" shape="arch" focus="45% 60%" light="right" brief />
+            <Media id="PHILOSOPHY_HANDS_IMAGE" locale={locale} tone="dark" shape="arch" focus="40% 35%" light="right" brief />
           </div>
         </div>
 

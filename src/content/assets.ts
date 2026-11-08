@@ -47,8 +47,9 @@ export const assets = a({
   },
   PHILOSOPHY_HANDS_IMAGE: {
     kind: "image", ratio: 4 / 5,
+    src: "/media/philosophy-hands.webp",
     alt: { en: "Hands at work during a massage", "pt-br": "Mãos em movimento durante a massagem" },
-    brief: "Close-up, hands on skin, natural light. Editorial, warm, no logos.",
+    brief: "Illustrative image generated with WaveSpeed (2026-11-08) in the style of the supplied lymphatic photo; replace with a real photo when available.",
   },
   MOTHER_DAUGHTER_PORTRAIT: {
     kind: "image", ratio: 3 / 2, ratioMobile: 4 / 5,
@@ -108,8 +109,9 @@ export const assets = a({
   },
   EXPERIENCE_TOWELS_IMAGE: {
     kind: "image", ratio: 4 / 5,
+    src: "/media/experience-towels.webp",
     alt: { en: "Prepared towels and oils", "pt-br": "Toalhas e óleos preparados" },
-    brief: "Still life: folded towels, oils, warm light.",
+    brief: "Illustrative image generated with WaveSpeed (2026-11-08) in the style of the supplied lymphatic photo; replace with a real photo when available.",
   },
   EXPERTISE_VIDEO_01: {
     kind: "video", ratio: 9 / 16,
