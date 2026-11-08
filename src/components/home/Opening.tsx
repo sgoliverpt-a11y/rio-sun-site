@@ -32,7 +32,7 @@ export function IntroOverlay({ label }: { label: string }) {
       <script dangerouslySetInnerHTML={{ __html: pre }} />
       <div className="intro surface-dark grain fixed inset-0 z-[45] flex items-center justify-center" aria-hidden>
         <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_45%,rgba(138,31,51,.55),transparent_70%)]" />
-        <HeroLogo className="relative w-[min(84vw,820px)]" />
+        <HeroLogo className="w-[min(80vw,820px)]" />
         <button type="button" className="intro-skip absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] tracking-[.08em] text-gold-200/70 underline-offset-4 hover:underline"
           tabIndex={-1}>{label}</button>
       </div>

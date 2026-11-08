@@ -7,7 +7,7 @@ import { brand } from "@/content/assets";
  */
 export function HeroLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`relative mx-auto w-full ${className}`} data-bands="intro">
+    <div className={`relative mx-auto max-w-full ${className || "w-full"}`} data-bands="intro">
       <div className="relative mx-auto" style={{ width: "68.24%", marginLeft: "16.2%" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={brand.symbol} alt="" width={1010} height={330} className="logo-reveal-symbol block h-auto w-full" fetchPriority="high" decoding="async" />

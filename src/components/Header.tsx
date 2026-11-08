@@ -82,13 +82,13 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </ul>
           </nav>
 
-          <div className="relative z-10 flex items-center gap-3 sm:gap-5">
+          <div className="relative z-10 flex items-center gap-1 min-[380px]:gap-3 sm:gap-5">
             <SoundToggle on={dict.sound.on} off={dict.sound.off} />
             <LanguageSwitcher locale={locale} label={dict.nav.language} />
             <Link href={href(locale, "/booking")}
               className={`btn hidden sm:inline-flex !min-h-10 !px-5 ${dark ? "btn-gold" : "btn-burgundy"}`}>{dict.nav.book}</Link>
             <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="mobile-menu"
-              className="lg:hidden -mr-2 flex h-11 w-11 items-center justify-center" aria-label={open ? dict.nav.close : dict.nav.menu}>
+              className="lg:hidden sm:-mr-2 flex h-11 w-11 items-center justify-center" aria-label={open ? dict.nav.close : dict.nav.menu}>
               <span className="relative block h-3 w-6">
                 <span className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0"}`} />
                 <span className={`absolute left-0 h-px bg-current transition-all duration-500 ${open ? "top-1.5 w-6 -rotate-45" : "top-3 w-4"}`} />
