@@ -29,7 +29,8 @@ export function Media({
     if (a.kind === "video") {
       return (
         <div className={box} style={ratioStyle}>
-          <video className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }} autoPlay muted loop playsInline preload="metadata" poster={a.poster} aria-label={alt}>
+          {/* autoplay is started by <VideoAutoplay/> only when visible and motion is allowed; the poster stays otherwise */}
+          <video className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }} muted loop playsInline preload="none" poster={a.poster} aria-label={alt} data-autoplay="">
             {a.srcMobile && <source src={a.srcMobile} media="(max-width: 767px)" />}
             <source src={a.src} />
           </video>

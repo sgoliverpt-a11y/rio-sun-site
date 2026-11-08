@@ -29,14 +29,16 @@ const a = <T extends Record<string, Asset>>(m: T): { [K in keyof T]: Asset } => 
 
 export const assets = a({
   HERO_VIDEO_DESKTOP: {
-    kind: "video", ratio: 16 / 9,
-    alt: { en: "Brazilian lymphatic drainage treatment at Rio Sun", "pt-br": "Tratamento de drenagem linfática brasileira na Rio Sun" },
-    brief: "8–12 s seamless loop, 1920×1080, no audio, MP4 (H.264) + WebM, ≤ 3 MB. Slow hands, warm side light, burgundy & ivory textiles.",
+    kind: "video", ratio: 9 / 16,
+    src: "/media/hero-desktop.mp4", poster: "/media/hero-poster.webp",
+    alt: { en: "Rio Sun's therapists preparing the treatment room and performing a lymphatic massage", "pt-br": "As terapeutas da Rio Sun preparando a sala e realizando uma massagem linfática" },
+    brief: "DELIVERED 2026-11-08: 10 s loop cut from Rio Sun's own Instagram film (360×640 source, upscaled to 540×960), subtle warm grade, no audio. Replace with the uncaptioned original for full sharpness.",
   },
   HERO_VIDEO_MOBILE: {
     kind: "video", ratio: 9 / 16,
-    alt: { en: "Brazilian lymphatic drainage treatment at Rio Sun", "pt-br": "Tratamento de drenagem linfática brasileira na Rio Sun" },
-    brief: "Vertical 1080×1920 version of the hero loop, ≤ 2 MB. Subject centred in the upper two-thirds (text sits below).",
+    src: "/media/hero-mobile.mp4", poster: "/media/hero-poster-mobile.webp",
+    alt: { en: "Rio Sun's therapists preparing the treatment room and performing a lymphatic massage", "pt-br": "As terapeutas da Rio Sun preparando a sala e realizando uma massagem linfática" },
+    brief: "DELIVERED 2026-11-08: same loop at 360×640 (~330 KB).",
   },
   HERO_POSTER: {
     kind: "image", ratio: 16 / 9, ratioMobile: 9 / 16,

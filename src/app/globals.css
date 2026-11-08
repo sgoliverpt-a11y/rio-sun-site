@@ -273,11 +273,11 @@ html.intro-done { --after-intro: .15s; }
 .intro { animation: intro-out 1.8s cubic-bezier(.45,0,.25,1) 3.4s forwards; }
 .intro > * { animation: intro-drift 1.8s cubic-bezier(.45,0,.25,1) 3.4s forwards; }
 @keyframes intro-drift { to { transform: scale(1.035); filter: blur(3px); } }
-html.intro-done .intro { display: none; }
+html.intro-done .intro { display: none !important; }
 @keyframes intro-out { 0% { opacity: 1; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro { display: none; }
+  .intro { display: none !important; }
   .hero-window, .hero-word, .hero-rest { animation: none; }
 }
 
@@ -289,11 +289,11 @@ html.intro-done .intro { display: none; }
 /* Home treatments gallery */
 .tcard-media { transform: translateX(calc(var(--p, 0) * -5%)) scale(var(--s, 1)); transition: transform .5s cubic-bezier(.22,.61,.36,1); will-change: transform; }
 .tcard:hover { --s: 1.035; }
-@media (min-width: 768px) and (pointer: fine) {
-  .tgallery { cursor: grab; scroll-snap-type: none; }
-  .tgallery.is-manual { scroll-snap-type: x proximity; }
-  .tgallery.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
-}
+@media (pointer: fine) { .tgallery { cursor: grab; } .tgallery.is-dragging { cursor: grabbing; user-select: none; } }
+/* linked mode: sticky stage, page scroll drives the rail (set by TreatmentGallery) */
+.tg-track.is-linked { height: calc(100svh + var(--dist, 0px)); }
+.tg-track.is-linked .tg-stage { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+.tg-track.is-linked .tgallery { scroll-snap-type: none; }
 html.js .tcard[data-reveal="fade"]:not(.is-in) { transform: translateY(28px) scale(.97); }
 @media (prefers-reduced-motion: reduce) { .tcard-media { transform: none; transition: none; } }
 

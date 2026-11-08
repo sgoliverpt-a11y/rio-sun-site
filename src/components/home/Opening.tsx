@@ -59,14 +59,14 @@ export function Hero({ locale, dict }: P) {
 
       {/* THE WINDOW — expressive area reserved for the hero film */}
       <div className="hero-window relative z-0 mx-auto max-md:mt-[calc(var(--header-h)+3svh)] max-md:h-[52svh] max-md:w-[74vw] md:absolute md:bottom-[9svh] md:right-[7vw] md:top-[calc(var(--header-h)+5svh)] md:w-[min(30vw,54svh)]">
-        <div className="absolute inset-0 hidden md:block"><Media id="HERO_VIDEO_DESKTOP" locale={locale} fill shape="arch" priority focus="55% 55%" light="left" /></div>
-        <div className="absolute inset-0 md:hidden"><Media id="HERO_VIDEO_MOBILE" locale={locale} fill shape="arch" priority focus="50% 40%" light="top" /></div>
+        <div className="absolute inset-0 hidden md:block"><Media id="HERO_VIDEO_DESKTOP" locale={locale} fill shape="arch" priority focus="50% 38%" light="left" /></div>
+        <div className="absolute inset-0 md:hidden"><Media id="HERO_VIDEO_MOBILE" locale={locale} fill shape="arch" priority focus="50% 35%" light="top" /></div>
         <div aria-hidden className="pointer-events-none absolute inset-0 rounded-t-[9999px] ring-1 ring-inset ring-gold-300/30" />
       </div>
 
       {/* the two bands (no arc: the arc belongs to the intro) cross the window and
           point back to the title — they lead the eye, they don't fill the frame */}
-      <div data-bands="intro" className="hero-bands pointer-events-none z-[2] max-md:relative max-md:-mt-[13vw] max-md:ml-[6vw] max-md:w-[86vw] md:absolute md:bottom-[27svh] md:right-[3vw] md:w-[38vw]">
+      <div data-bands="intro" className="hero-bands pointer-events-none z-[2] max-md:relative max-md:-mt-[13vw] max-md:ml-[6vw] max-md:w-[86vw] md:absolute md:bottom-[19svh] md:right-[3vw] md:w-[38vw]">
         <BrandBands uid="hero" />
       </div>
 

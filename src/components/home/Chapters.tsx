@@ -17,7 +17,7 @@ type P = { locale: Locale; dict: Dictionary };
 export function Treatments({ locale, dict }: P) {
   const s = dict.home.treatments;
   return (
-    <section data-chapter="04" data-header="light" className="surface-light overflow-hidden pb-28 pt-24 md:pb-36 md:pt-32" aria-label={s.title}>
+    <section data-chapter="04" data-header="light" className="surface-light overflow-clip pb-28 pt-24 md:pb-36 md:pt-32" aria-label={s.title}>
       <div className="gutter mx-auto max-w-[1600px]">
         <div className="grid items-end gap-8 md:grid-cols-12">
           <div className="md:col-span-7">
@@ -31,7 +31,7 @@ export function Treatments({ locale, dict }: P) {
         </div>
       </div>
 
-      <div className="mt-14 md:mt-20">
+      <div className="mt-6 md:mt-10">
         <TreatmentGallery items={treatments} locale={locale} dict={dict} />
       </div>
 
