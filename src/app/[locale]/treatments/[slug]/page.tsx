@@ -63,7 +63,7 @@ export default async function TreatmentDetail({ params }: Props) {
             <BookingButtons dict={dict} on={tr.bookOn} className="mt-10" />
           </div>
           <div className="md:col-span-5 md:col-start-8">
-            <div className="overflow-hidden" data-reveal="mask"><Media id={tr.media} locale={locale} tone="dark" priority /></div>
+            <div className="overflow-hidden" data-reveal="fan" data-fan="r"><Media id={tr.media} locale={locale} tone="dark" priority /></div>
           </div>
         </div>
       </section>

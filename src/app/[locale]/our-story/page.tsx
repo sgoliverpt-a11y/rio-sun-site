@@ -27,7 +27,7 @@ export default async function OurStory({ params }: Props) {
 
       <section data-header="light" className="surface-cream relative overflow-hidden">
         <div className="gutter mx-auto max-w-[1600px] py-20 md:py-28">
-          <div className="overflow-hidden" data-reveal="mask">
+          <div className="overflow-hidden" data-reveal="fan" data-fan="soft">
             <div data-parallax="0.1" className="scale-[1.1]"><Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" /></div>
           </div>
           <div className="mt-20 grid gap-16 md:grid-cols-2 md:gap-24" data-draft data-review-note="DRAFT: story to be written with Marcia & Isabella">
@@ -48,7 +48,7 @@ export default async function OurStory({ params }: Props) {
           <div className="mt-10 grid gap-14 md:grid-cols-2">
             {team.map((m, i) => (
               <article key={m.id} className={i === 1 ? "md:mt-24" : ""}>
-                <div className="overflow-hidden" data-reveal="mask"><Media id={m.portrait} locale={locale} tone="dark" /></div>
+                <div className="overflow-hidden" data-reveal="fan" data-fan={i ? "r" : undefined}><Media id={m.portrait} locale={locale} tone="dark" /></div>
                 <h3 className="display-md mt-8 text-burgundy-800">{m.name}</h3>
                 <ul className="mt-5 space-y-2 text-[16px]">
                   {m.facts[locale].map((f) => <li key={f} className="flex gap-3"><span aria-hidden className="text-accent">—</span>{f}</li>)}

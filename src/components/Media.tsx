@@ -10,7 +10,7 @@ import { t, type Locale } from "@/i18n/config";
  */
 export function Media({
   id, locale, className = "", tone = "dark", sizes, priority = false, fill = false, label = true, brief = false,
-  focus = "50% 45%", light = "left", shape = "rect",
+  focus = "50% 45%", light = "left", shape = "rect", loop = true,
 }: {
   id: AssetId; locale: Locale; className?: string; tone?: "dark" | "light"; sizes?: string;
   priority?: boolean; fill?: boolean; label?: boolean; brief?: boolean;
@@ -18,6 +18,8 @@ export function Media({
   focus?: string; light?: "left" | "right" | "top";
   /** "arch" = the Rio Sun solar-arc window (signature frame) */
   shape?: "rect" | "arch";
+  /** video only: false = plays once, rests on the last frame, replays when scrolled back into view */
+  loop?: boolean;
 }) {
   const a: Asset = assets[id];
   const alt = t(a.alt, locale);
@@ -30,7 +32,7 @@ export function Media({
       return (
         <div className={box} style={ratioStyle}>
           {/* autoplay is started by <VideoAutoplay/> only when visible and motion is allowed; the poster stays otherwise */}
-          <video className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }} muted loop playsInline preload="none" poster={a.poster} aria-label={alt} data-autoplay="">
+          <video className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: focus }} muted loop={loop} playsInline preload="none" poster={a.poster} aria-label={alt} data-autoplay={loop ? "loop" : "once"}>
             {a.srcMobile && <source src={a.srcMobile} media="(max-width: 767px)" />}
             <source src={a.src} />
           </video>

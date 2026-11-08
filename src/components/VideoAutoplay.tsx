@@ -3,26 +3,49 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
- * Plays muted loop videos (`video[data-autoplay]`) only when they are on screen and
- * displayed, never under prefers-reduced-motion (the poster stays). Hidden variants
- * (desktop vs mobile copy) are never downloaded because they never get play().
+ * Plays muted videos (`video[data-autoplay]`) only when they are on screen and displayed,
+ * never under prefers-reduced-motion (the poster stays). Hidden variants (desktop vs
+ * mobile copy) are never downloaded because they never get play().
+ * data-autoplay="once": plays through once and rests on its last frame; after the video
+ * has left the viewport, coming back to it plays it again from the start.
+ * While the home intro overlay is showing, playback waits for it to clear.
  */
 export function VideoAutoplay() {
   const pathname = usePathname();
   useEffect(() => {
     const mq = matchMedia("(prefers-reduced-motion: reduce)");
     const vids = Array.from(document.querySelectorAll<HTMLVideoElement>("video[data-autoplay]"));
+    const left = new WeakSet<HTMLVideoElement>();
+    const intro = document.querySelector<HTMLElement>(".intro");
+    let ready = !intro || getComputedStyle(intro).display === "none";
+    const visible = new Set<HTMLVideoElement>();
+
+    const start = (v: HTMLVideoElement) => {
+      if (!ready || mq.matches || v.offsetParent === null) return;
+      if (v.dataset.autoplay === "once") {
+        if (left.has(v)) { left.delete(v); v.currentTime = 0; }
+        else if (v.ended) return; // rests on the last frame
+      }
+      v.play().catch(() => {});
+    };
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         const v = e.target as HTMLVideoElement;
-        const shown = v.offsetParent !== null || getComputedStyle(v).position === "fixed";
-        if (e.isIntersecting && shown && !mq.matches) v.play().catch(() => {}); else v.pause();
+        if (e.isIntersecting) { visible.add(v); start(v); }
+        else { visible.delete(v); v.pause(); if (v.played.length) left.add(v); }
       }
     }, { threshold: 0.15 });
     vids.forEach((v) => { v.muted = true; io.observe(v); });
-    const onMq = () => vids.forEach((v) => { if (mq.matches) v.pause(); else { io.unobserve(v); io.observe(v); } });
+
+    let t: number | undefined;
+    if (!ready) {
+      const go = () => { if (ready) return; ready = true; visible.forEach(start); };
+      t = window.setTimeout(go, 3600); // the hero is revealed under the dissolving intro
+      document.querySelector(".intro-skip")?.addEventListener("click", go, { once: true });
+    }
+    const onMq = () => vids.forEach((v) => (mq.matches ? v.pause() : visible.has(v) && start(v)));
     mq.addEventListener("change", onMq);
-    return () => { io.disconnect(); mq.removeEventListener("change", onMq); };
+    return () => { io.disconnect(); clearTimeout(t); mq.removeEventListener("change", onMq); };
   }, [pathname]);
   return null;
 }

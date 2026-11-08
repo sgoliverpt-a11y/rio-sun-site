@@ -8,6 +8,7 @@ import { PageHero } from "@/components/PageHero";
 import { Media } from "@/components/Media";
 import { Arrow } from "@/components/ui";
 import { site } from "@/content/site";
+import { Quiz } from "@/components/Quiz";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -29,8 +30,18 @@ export default async function TreatmentsPage({ params }: Props) {
             <a key={c.id} href={`#${c.id}`} className="rounded-full border border-line px-4 py-2 text-[12px] tracking-[.12em] uppercase transition-colors hover:bg-gold-300 hover:text-burgundy-900">{t(c.name, locale)}</a>
           ))}
         </nav>
-        <Link href={href(locale, "/find-your-treatment")} className="eyebrow link-underline mt-8 inline-block text-gold-300">{dict.home.treatments.quiz}</Link>
+        <a href="#quiz" className="btn btn-gold mt-10">{dict.quiz.cta}</a>
       </PageHero>
+
+      {/* FIND YOUR TREATMENT — the quiz lives next to the menu it recommends from */}
+      <section id="quiz" data-header="light" className="surface-cream scroll-mt-16" aria-labelledby="quiz-title">
+        <div className="gutter mx-auto max-w-[1300px] py-20 md:py-28">
+          <p className="eyebrow text-accent">{dict.quiz.eyebrow}</p>
+          <h2 id="quiz-title" className="display-lg mt-6 max-w-[18ch] text-burgundy-800">{dict.quiz.title}</h2>
+          <p className="lede mt-6 max-w-2xl text-muted">{dict.quiz.lead}</p>
+          <div className="mt-14 border-t border-line pt-12 md:mt-16"><Quiz locale={locale} dict={dict} /></div>
+        </div>
+      </section>
 
       <div data-header="light" className="surface-light">
         {categories.map((c, ci) => (
@@ -48,7 +59,7 @@ export default async function TreatmentsPage({ params }: Props) {
                   <li key={tr.slug} id={tr.slug} className="scroll-mt-24 border-t border-line py-8 first:border-t-0 first:pt-0 md:first:border-t md:first:pt-8"
                     data-status={tr.status} data-review-note={reviewNote(tr)}>
                     <div className="grid gap-6 sm:grid-cols-[120px_1fr] md:grid-cols-[140px_1fr]">
-                      <div className="hidden sm:block"><Media id={tr.media} locale={locale} tone="dark" label={false} /></div>
+                      <div className="hidden sm:block" data-reveal="fan"><Media id={tr.media} locale={locale} tone="dark" label={false} /></div>
                       <div>
                         <h3 className="display-sm text-burgundy-800">
                           {tr.detail ? <Link className="link-underline" href={href(locale, `/treatments/${tr.slug}`)}>{t(tr.name, locale)}</Link> : t(tr.name, locale)}

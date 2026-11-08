@@ -86,6 +86,7 @@ const ptBR: Dictionary = {
       of: "de",
       book: "Agendar",
       quiz: "Não sabe por onde começar? Descubra o seu tratamento",
+      quizHint: "Três perguntas rápidas, uma sugestão.",
     },
     expertise: {
       label: "Conhecimento",
@@ -237,7 +238,7 @@ const ptBR: Dictionary = {
     alsoConsider: "Vale considerar também",
     note: "Isto é um guia, não um aconselhamento médico. A terapeuta conversa com você antes da sessão e adapta o tratamento.",
     details: "Ver tratamento",
-    cta: "Fazer o quiz",
+    cta: "Descubra o seu tratamento",
   },
   notFound: { title: "Esta página se perdeu pelo caminho.", back: "Voltar ao início" },
   review: {

@@ -84,6 +84,7 @@ const en = {
       of: "of",
       book: "Book",
       quiz: "Not sure where to start? Find your treatment",
+      quizHint: "Three quick questions, one suggestion.",
     },
     expertise: {
       label: "Expertise",
@@ -235,7 +236,7 @@ const en = {
     alsoConsider: "Also worth considering",
     note: "This is a guide, not medical advice. Your therapist will talk with you before the session and adapt the treatment to you.",
     details: "View treatment",
-    cta: "Take the quiz",
+    cta: "Find your treatment",
   },
   notFound: { title: "This page has drifted away.", back: "Back to home" },
   review: {

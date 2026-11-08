@@ -141,7 +141,7 @@ export function TreatmentGallery({ items, locale, dict }: { items: Treatment[]; 
           const book = tr.bookOn[0] === "fresha" ? site.links.freshaBooking : site.links.treatwell;
           const cat = categories.find((c) => c.id === tr.category)!;
           return (
-            <li key={tr.slug} data-reveal="fade" data-reveal-delay={String(Math.min(i, 3))} className="tcard group w-[min(78vw,calc((100svh-400px)*0.8))] shrink-0 sm:w-[min(44vw,calc((100svh-400px)*0.8))] md:w-[min(30vw,calc((100svh-400px)*0.8))] lg:w-[min(24vw,400px,calc((100svh-400px)*0.8))]"
+            <li key={tr.slug} data-reveal="fan" data-fan={i % 2 ? "r" : undefined} data-reveal-delay={String(Math.min(i, 3))} className="tcard group w-[min(78vw,calc((100svh-400px)*0.8))] shrink-0 sm:w-[min(44vw,calc((100svh-400px)*0.8))] md:w-[min(30vw,calc((100svh-400px)*0.8))] lg:w-[min(24vw,400px,calc((100svh-400px)*0.8))]"
               data-status={tr.status} data-review-note={reviewNote(tr)}>
               <article className="flex h-full flex-col">
                 <Link href={link} className="relative block aspect-[4/5] overflow-hidden" tabIndex={-1} aria-hidden draggable={false}>

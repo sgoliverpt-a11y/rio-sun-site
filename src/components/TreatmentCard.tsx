@@ -10,9 +10,9 @@ export function TreatmentCard({ tr, locale, dict, index, tone = "light" }: {
 }) {
   const link = tr.detail ? href(locale, `/treatments/${tr.slug}`) : href(locale, `/treatments`) + `#${tr.slug}`;
   return (
-    <article className="group relative flex flex-col" data-status={tr.status} data-review-note={reviewNote(tr)}>
+    <article className="group relative flex flex-col" data-reveal="fan" data-fan={index !== undefined && index % 2 ? "r" : undefined} data-status={tr.status} data-review-note={reviewNote(tr)}>
       <Link href={link} className="block overflow-hidden rounded-[2px]" tabIndex={-1} aria-hidden>
-        <div data-reveal="mask" className="transition-transform duration-[1.6s] ease-[var(--ease-silk)] group-hover:scale-[1.035]">
+        <div className="transition-transform duration-[1.6s] ease-[var(--ease-silk)] group-hover:scale-[1.035]">
           <Media id={tr.media} locale={locale} tone={tone === "light" ? "dark" : "light"} />
         </div>
       </Link>

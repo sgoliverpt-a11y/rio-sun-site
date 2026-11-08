@@ -26,7 +26,10 @@ export function Treatments({ locale, dict }: P) {
           </div>
           <div className="md:col-span-5" data-reveal="fade">
             <p className="lede text-muted">{s.lead}</p>
-            <Link href={href(locale, "/find-your-treatment")} className="eyebrow link-underline mt-6 inline-block text-accent">{s.quiz}</Link>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <ButtonLink href={href(locale, "/treatments") + "#quiz"} variant="burgundy">{dict.quiz.cta}</ButtonLink>
+              <span className="text-[14px] text-muted">{s.quizHint}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -70,7 +73,7 @@ export function Expertise({ locale, dict }: P) {
         <div className="mt-16 grid gap-14 lg:grid-cols-12">
           <ul className="rail -mx-[var(--gutter)] flex gap-4 overflow-x-auto px-[var(--gutter)] lg:col-span-7 lg:mx-0 lg:px-0">
             {vids.map((v, i) => (
-              <li key={v} className="w-[64vw] shrink-0 sm:w-[38vw] lg:w-auto lg:flex-1" data-reveal="fade" data-reveal-delay={String(i)}>
+              <li key={v} className="w-[64vw] shrink-0 sm:w-[38vw] lg:w-auto lg:flex-1" data-reveal="fan" data-fan={i === 2 ? "r" : i === 1 ? "c" : undefined} data-reveal-delay={String(i)}>
                 <button type="button" className="group relative block w-full overflow-hidden text-left" aria-label={`${dict.cta.watch}: ${s.videos[i]}`}>
                   <Media id={v} locale={locale} tone="dark" />
                   <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold-300/60 text-gold-200 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
@@ -116,12 +119,12 @@ export function Experience({ locale, dict }: P) {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-12 md:gap-8">
-          <div className="overflow-hidden md:col-span-8" data-reveal="mask">
+          <div className="overflow-hidden md:col-span-8" data-reveal="fan" data-fan="soft">
             <div data-parallax="0.08" className="scale-[1.08]"><Media id="EXPERIENCE_ROOM_IMAGE" locale={locale} tone="dark" /></div>
           </div>
           <div className="grid grid-cols-2 gap-6 md:col-span-4 md:grid-cols-1 md:gap-8">
-            <div className="overflow-hidden" data-reveal="mask" data-reveal-delay="1"><Media id="EXPERIENCE_TEA_IMAGE" locale={locale} tone="light" /></div>
-            <div className="overflow-hidden md:hidden" data-reveal="mask" data-reveal-delay="2"><Media id="EXPERIENCE_TOWELS_IMAGE" locale={locale} tone="dark" /></div>
+            <div className="overflow-hidden" data-reveal="fan" data-fan="r" data-reveal-delay="2"><Media id="EXPERIENCE_TEA_IMAGE" locale={locale} tone="light" /></div>
+            <div className="overflow-hidden md:hidden" data-reveal="fan" data-reveal-delay="3"><Media id="EXPERIENCE_TOWELS_IMAGE" locale={locale} tone="dark" /></div>
           </div>
         </div>
 

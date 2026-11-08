@@ -32,13 +32,13 @@ export const assets = a({
     kind: "video", ratio: 9 / 16,
     src: "/media/hero-desktop.mp4", poster: "/media/hero-poster.webp",
     alt: { en: "Rio Sun's therapists preparing the treatment room and performing a lymphatic massage", "pt-br": "As terapeutas da Rio Sun preparando a sala e realizando uma massagem linfática" },
-    brief: "DELIVERED 2026-11-08: 10 s loop cut from Rio Sun's own Instagram film (360×640 source, upscaled to 540×960), subtle warm grade, no audio. Replace with the uncaptioned original for full sharpness.",
+    brief: "DELIVERED 2026-11-08: 8 s film (plays once, rests on the room) cut from Rio Sun's own Instagram film (360×640 source, upscaled to 540×960), subtle warm grade, no audio. Replace with the uncaptioned original for full sharpness.",
   },
   HERO_VIDEO_MOBILE: {
     kind: "video", ratio: 9 / 16,
     src: "/media/hero-mobile.mp4", poster: "/media/hero-poster-mobile.webp",
     alt: { en: "Rio Sun's therapists preparing the treatment room and performing a lymphatic massage", "pt-br": "As terapeutas da Rio Sun preparando a sala e realizando uma massagem linfática" },
-    brief: "DELIVERED 2026-11-08: same loop at 360×640 (~330 KB).",
+    brief: "DELIVERED 2026-11-08: same film at 360×640 (~255 KB).",
   },
   HERO_POSTER: {
     kind: "image", ratio: 16 / 9, ratioMobile: 9 / 16,

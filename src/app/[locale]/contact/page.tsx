@@ -67,7 +67,7 @@ export default async function Contact({ params }: Props) {
           <div className="md:col-span-4">
             <h2 id="contact-form" className="display-md text-burgundy-800">{c.form.title}</h2>
             <p className="mt-6 text-[16px] leading-relaxed text-muted">{c.form.lead}</p>
-            <Link href={href(locale, "/find-your-treatment")} className="eyebrow link-underline mt-8 inline-block text-accent">{dict.home.treatments.quiz}</Link>
+            <Link href={href(locale, "/treatments") + "#quiz"} className="eyebrow link-underline mt-8 inline-block text-accent">{dict.home.treatments.quiz}</Link>
           </div>
           <div className="md:col-span-7 md:col-start-6">
             <ContactForm locale={locale} dict={dict} />

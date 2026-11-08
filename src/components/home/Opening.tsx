@@ -25,8 +25,8 @@ function wordSizing(words: string[], maxVw: number, widthVw: number, indentShare
 
 /* ── 00 INTRO — the approved logo motion opens the site (once per session) ── */
 export function IntroOverlay({ label }: { label: string }) {
-  // Runs before paint: returning visitors and reduced-motion users never see the overlay.
-  const pre = `try{if(sessionStorage.getItem('rs-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-done')}else{sessionStorage.setItem('rs-intro','1')}}catch(e){}`;
+  // Plays on every visit to the home page (skippable); reduced-motion users never see it.
+  const pre = `try{if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-done')}else{document.documentElement.classList.remove('intro-done')}}catch(e){}`;
   return (
     <>
       <script dangerouslySetInnerHTML={{ __html: pre }} />
@@ -59,8 +59,8 @@ export function Hero({ locale, dict }: P) {
 
       {/* THE WINDOW — expressive area reserved for the hero film */}
       <div className="hero-window relative z-0 mx-auto max-md:mt-[calc(var(--header-h)+3svh)] max-md:h-[52svh] max-md:w-[74vw] md:absolute md:bottom-[9svh] md:right-[7vw] md:top-[calc(var(--header-h)+5svh)] md:w-[min(30vw,54svh)]">
-        <div className="absolute inset-0 hidden md:block"><Media id="HERO_VIDEO_DESKTOP" locale={locale} fill shape="arch" priority focus="50% 38%" light="left" /></div>
-        <div className="absolute inset-0 md:hidden"><Media id="HERO_VIDEO_MOBILE" locale={locale} fill shape="arch" priority focus="50% 35%" light="top" /></div>
+        <div className="absolute inset-0 hidden md:block"><Media id="HERO_VIDEO_DESKTOP" locale={locale} fill shape="arch" priority focus="50% 38%" light="left" loop={false} /></div>
+        <div className="absolute inset-0 md:hidden"><Media id="HERO_VIDEO_MOBILE" locale={locale} fill shape="arch" priority focus="50% 35%" light="top" loop={false} /></div>
         <div aria-hidden className="pointer-events-none absolute inset-0 rounded-t-[9999px] ring-1 ring-inset ring-gold-300/30" />
       </div>
 
@@ -119,7 +119,7 @@ export function Philosophy({ locale, dict }: P) {
         </div>
         {/* the photograph straddles the seam: half night, half day */}
         <div className="gutter relative mx-auto max-w-[1600px]">
-          <div className="relative z-10 ml-auto w-[56vw] -translate-y-[40%] md:absolute md:right-[calc(var(--gutter)+3vw)] md:top-0 md:w-[25vw] md:max-w-[440px] md:-translate-y-[62%]">
+          <div data-reveal="fan" data-fan="r" className="relative z-10 ml-auto w-[56vw] -translate-y-[40%] md:absolute md:right-[calc(var(--gutter)+3vw)] md:top-0 md:w-[25vw] md:max-w-[440px] md:-translate-y-[62%]">
             <Media id="PHILOSOPHY_HANDS_IMAGE" locale={locale} tone="dark" shape="arch" focus="45% 60%" light="right" brief />
           </div>
         </div>
@@ -168,7 +168,7 @@ export function Story({ locale, dict }: P) {
         <div className="relative mt-14 grid grid-cols-2 gap-x-4 md:mt-20 md:grid-cols-12 md:gap-x-8">
           {[marcia, isabella].map((m, i) => (
             <figure key={m.id} className={i === 0 ? "md:col-span-4 md:col-start-2" : "mt-[20vw] md:col-span-4 md:col-start-8 md:mt-[12vw]"}>
-              <div data-reveal="mask">
+              <div data-reveal="fan" data-fan={i ? "r" : undefined} data-reveal-delay={String(i)}>
                 <Media id={m.portrait} locale={locale} tone="dark" shape="arch" focus={i === 0 ? "52% 38%" : "48% 38%"} light={i === 0 ? "left" : "right"} />
               </div>
               <figcaption className="mt-6 md:mt-8">
@@ -191,7 +191,7 @@ export function Story({ locale, dict }: P) {
 
       {/* together: the double portrait, wide, with the line set over it */}
       <div className="relative mt-20 md:mt-28">
-        <div data-reveal="mask" className="relative">
+        <div data-reveal="fan" data-fan="soft" className="relative">
           <Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" focus="50% 42%" light="left" brief className="max-h-[88svh]" />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(28,1,7,.75)_0%,rgba(28,1,7,.2)_55%,transparent)]" />
           <p className="gutter absolute left-0 top-1/2 max-w-[18ch] -translate-y-1/2 font-display text-[clamp(1.45rem,2.7vw,2.9rem)] italic leading-[1.08] text-ivory md:max-w-[16ch]">{s.note}</p>
