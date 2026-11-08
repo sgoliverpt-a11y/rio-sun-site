@@ -50,7 +50,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <li><Link className="link-underline" href={href(locale, "/legal/cookies")}>{dict.footer.cookies}</Link></li>
             <li><Link className="link-underline" href={href(locale, "/legal/terms")}>{dict.footer.terms}</Link></li>
           </ul>
-          <p>{dict.footer.credit}</p>
+          <p>{dict.footer.credit}{" "}<a href={site.links.griffara} target="_blank" rel="noopener" className="link-underline transition-opacity hover:opacity-100">Griffara Studio</a></p>
         </div>
       </div>
     </footer>

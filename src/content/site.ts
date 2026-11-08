@@ -19,6 +19,8 @@ export const site = {
   },
   languages: ["English", "Português (Brasil)"],
   links: {
+    // Studio credit in the footer (referral-tagged so Griffara can see visits from client sites)
+    griffara: "https://griffara.com/?utm_source=riosun&utm_medium=referral&utm_campaign=client-credit",
     // Official links supplied by the client on 2026-11-08
     instagram: "https://www.instagram.com/riosunmassagetherapy/",
     treatwell: "https://www.treatwell.co.uk/place/rio-sun-massage-therapy-london/",

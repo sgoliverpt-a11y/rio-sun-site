@@ -216,7 +216,7 @@ const en = {
     cookies: "Cookie Policy",
     terms: "Terms & Booking",
     rights: "All rights reserved.",
-    credit: "Creative direction: Griffara Studio",
+    credit: "Creative direction:",
   },
   legal: {
     draft: "Draft for legal review. This text must be reviewed before launch.",

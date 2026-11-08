@@ -218,7 +218,7 @@ const ptBR: Dictionary = {
     cookies: "Política de Cookies",
     terms: "Termos & Agendamentos",
     rights: "Todos os direitos reservados.",
-    credit: "Direção criativa: Griffara Studio",
+    credit: "Direção criativa:",
   },
   legal: {
     draft: "Rascunho para revisão jurídica. Este texto precisa ser revisado antes do lançamento.",
