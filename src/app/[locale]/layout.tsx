@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { MobileBookBar } from "@/components/MobileBookBar";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { VideoAutoplay } from "@/components/VideoAutoplay";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { RevealObserver } from "@/components/RevealObserver";
 import { ReviewModeToggle } from "@/components/ReviewModeToggle";
 import { MotionProvider } from "@/motion/MotionProvider";
@@ -59,6 +60,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <ReviewModeToggle label={dict.review.toggle} hint={dict.review.hint} />
         <RevealObserver />
         <VideoAutoplay />
+        <SmoothScroll />
         <MotionProvider />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>

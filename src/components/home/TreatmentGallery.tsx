@@ -8,6 +8,7 @@ import { site } from "@/content/site";
 import { summaryLine, reviewNote } from "@/lib/format";
 import { Media } from "@/components/Media";
 import { assets } from "@/content/assets";
+import { pageScrollTo } from "@/lib/smooth";
 
 /**
  * HOME · TREATMENTS GALLERY — a discovery rail fed by the central catalogue.
@@ -67,12 +68,12 @@ export function TreatmentGallery({ items, locale, dict }: { items: Treatment[]; 
     const onRail = () => {
       measure();
       if (!linked || syncing) return;
-      scrollTo({ top: yFor(el.scrollLeft), behavior: "instant" as ScrollBehavior });
+      pageScrollTo(yFor(el.scrollLeft), false);
     };
     api.current = {
       toLeft: (left, smooth) => {
         left = Math.max(0, Math.min(max, left));
-        if (linked) scrollTo({ top: yFor(left), behavior: smooth ? "smooth" : "instant" as ScrollBehavior });
+        if (linked) pageScrollTo(yFor(left), smooth);
         else el.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
       },
     };
