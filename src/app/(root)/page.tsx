@@ -12,7 +12,7 @@ export default function RootRedirect() {
     <>
       <script dangerouslySetInnerHTML={{ __html: js }} />
       <noscript><meta httpEquiv="refresh" content="0; url=/en/" /></noscript>
-      <p style={{ color: "#f7f1e7", fontFamily: "system-ui", padding: 24 }}><a href="/en/" style={{ color: "#f6c47f" }}>Rio Sun Massage Therapy</a></p>
+      <p style={{ color: "#f8f4ee", fontFamily: "system-ui", padding: 24 }}><a href="/en/" style={{ color: "#d9c6a8" }}>Rio Sun Massage Therapy</a></p>
     </>
   );
 }

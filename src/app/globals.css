@@ -7,26 +7,26 @@
    Colours sampled from the approved emblem (burgundy field + gold bands).
    ───────────────────────────────────────────────────────────── */
 @theme {
-  --color-burgundy-950: #22010a;
-  --color-burgundy-900: #2f0109;
-  --color-burgundy-800: #3f000b;
-  --color-burgundy-700: #560314;
-  --color-burgundy-600: #6e0c20;
-  --color-burgundy-500: #8a1f33;
+  --color-burgundy-950: #1f2618;
+  --color-burgundy-900: #283220;
+  --color-burgundy-800: #343f2b;
+  --color-burgundy-700: #4b5a3e;
+  --color-burgundy-600: #5c6b4c;
+  --color-burgundy-500: #73825f;
 
-  --color-gold-100: #fef3d9;
-  --color-gold-200: #fde8bb;
-  --color-gold-300: #f6c47f;
-  --color-gold-400: #e2a861;
-  --color-gold-500: #c88f4a;
-  --color-gold-600: #a06334;
-  --color-gold-700: #7d4a24; /* gold text on light backgrounds (AA) */
+  --color-gold-100: #f6efe4;
+  --color-gold-200: #ece0cd;
+  --color-gold-300: #d9c6a8;
+  --color-gold-400: #c8b49a;
+  --color-gold-500: #b09a7b;
+  --color-gold-600: #8a7a5e;
+  --color-gold-700: #6b5d45; /* gold text on light backgrounds (AA) */
 
-  --color-ivory: #f7f1e7;
-  --color-cream: #efe5d5;
-  --color-sand: #dccbb3;
-  --color-stone: #8f7a66;
-  --color-ink: #24120f;
+  --color-ivory: #f8f4ee;
+  --color-cream: #efe7dc;
+  --color-sand: #e8d9ca;
+  --color-stone: #8a7a5e;
+  --color-ink: #2b2620;
 
   --font-display: "Bodoni Moda Variable", "Bodoni Moda", Didot, "Times New Roman", serif;
   --font-sans: "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -38,7 +38,7 @@
 :root {
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --header-h: 4.25rem;
-  --gold-metal: linear-gradient(100deg, #a06334 0%, #e2a861 22%, #fde8bb 42%, #f6c47f 58%, #c88f4a 78%, #8a5a2b 100%);
+  --gold-metal: linear-gradient(100deg, #8a7a5e 0%, #c8b49a 22%, #ece0cd 42%, #d9c6a8 58%, #b09a7b 78%, #6b5d45 100%);
   color-scheme: light;
 }
 
@@ -122,8 +122,8 @@ body {
   --surface-line: color-mix(in oklab, var(--color-gold-300) 28%, transparent);
   --surface-accent: var(--color-gold-300);
   background:
-    radial-gradient(120% 80% at 70% 0%, #5a0716 0%, transparent 60%),
-    radial-gradient(90% 70% at 0% 100%, #2a0108 0%, transparent 70%),
+    radial-gradient(120% 80% at 70% 0%, #4b5a3e 0%, transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, #283220 0%, transparent 70%),
     var(--color-burgundy-800);
   color: var(--surface-fg);
 }
@@ -336,5 +336,5 @@ html.js .tcard[data-reveal="fade"]:not(.is-in) { transform: translateY(28px) sca
 
 /* Darker metal on light surfaces (unlayered: must beat the utility) */
 .surface-light .text-gold-metal, .surface-cream .text-gold-metal {
-  background-image: linear-gradient(100deg, #6b3d1c 0%, #9a6233 35%, #b98349 55%, #8a5a2b 80%, #6b3d1c 100%);
+  background-image: linear-gradient(100deg, #6b3d1c 0%, #9a6233 35%, #b98349 55%, #6b5d45 80%, #6b3d1c 100%);
 }
