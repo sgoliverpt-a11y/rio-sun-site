@@ -7,12 +7,12 @@
    Colours sampled from the approved emblem (burgundy field + gold bands).
    ───────────────────────────────────────────────────────────── */
 @theme {
-  --color-burgundy-950: #22010a;
-  --color-burgundy-900: #2f0109;
-  --color-burgundy-800: #3f000b;
-  --color-burgundy-700: #560314;
-  --color-burgundy-600: #6e0c20;
-  --color-burgundy-500: #8a1f33;
+  --color-burgundy-950: #140c08;
+  --color-burgundy-900: #1d130d;
+  --color-burgundy-800: #2a1c14;
+  --color-burgundy-700: #3a271c;
+  --color-burgundy-600: #4c3426;
+  --color-burgundy-500: #654634;
 
   --color-gold-100: #fef3d9;
   --color-gold-200: #fde8bb;
@@ -26,7 +26,7 @@
   --color-cream: #efe5d5;
   --color-sand: #dccbb3;
   --color-stone: #8f7a66;
-  --color-ink: #24120f;
+  --color-ink: #22160f;
 
   --font-display: "Bodoni Moda Variable", "Bodoni Moda", Didot, "Times New Roman", serif;
   --font-sans: "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -122,8 +122,8 @@ body {
   --surface-line: color-mix(in oklab, var(--color-gold-300) 28%, transparent);
   --surface-accent: var(--color-gold-300);
   background:
-    radial-gradient(120% 80% at 70% 0%, #5a0716 0%, transparent 60%),
-    radial-gradient(90% 70% at 0% 100%, #2a0108 0%, transparent 70%),
+    radial-gradient(120% 80% at 70% 0%, #4a2f1f 0%, transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, #1a110b 0%, transparent 70%),
     var(--color-burgundy-800);
   color: var(--surface-fg);
 }

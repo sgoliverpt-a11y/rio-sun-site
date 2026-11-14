@@ -65,7 +65,7 @@ export function Media({
       {/* base: warm room tone */}
       <div className="absolute inset-0" style={{
         background: dark
-          ? `radial-gradient(130% 95% at ${lightPos}, #d08a5a 0%, #93392f 22%, #561019 52%, #22010a 100%)`
+          ? `radial-gradient(130% 95% at ${lightPos}, #d08a5a 0%, #7a4a2e 22%, #3a2519 52%, #140c08 100%)`
           : `radial-gradient(130% 95% at ${lightPos}, #fff6e6 0%, #ecdcc2 40%, #cdb18e 78%, #a8875f 100%)`,
       }} />
       {/* window light shafts */}
