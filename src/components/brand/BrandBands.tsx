@@ -31,7 +31,7 @@ export function BrandBands({
   shadow?: "dark" | "soft" | "none"; delay?: number; surface?: "dark" | "light";
 }) {
   const list = arc ? LAYERS : LAYERS.filter((l) => l.id !== "sunArc");
-  const filter = shadow === "dark" ? "drop-shadow(0 1.6vw 2.4vw rgba(20,0,6,.5))" : shadow === "soft" ? "drop-shadow(0 1.2vw 1.8vw rgba(63,0,11,.22))" : undefined;
+  const filter = shadow === "dark" ? "drop-shadow(0 1.6vw 2.4vw rgba(20,0,6,.5))" : shadow === "soft" ? "drop-shadow(0 1.2vw 1.8vw rgba(61,28,12,.22))" : undefined;
   return (
     <svg viewBox={arc ? paths.viewBox : BANDS_VIEWBOX} className={`brand-bands block h-auto w-full overflow-visible ${className}`}
       aria-hidden focusable="false" data-reveal={draw ? "draw" : undefined} style={{ filter }}>

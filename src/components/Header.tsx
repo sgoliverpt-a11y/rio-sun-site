@@ -64,7 +64,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,color,box-shadow] duration-700 ease-[var(--ease-silk)]
           ${hidden && !open ? "-translate-y-full" : "translate-y-0"}
           ${dark ? "text-ivory" : "text-burgundy-800"}
-          ${scrolled && !open ? (dark ? "bg-burgundy-900/70 backdrop-blur-md" : "bg-ivory/80 backdrop-blur-md shadow-[0_1px_0_rgba(63,0,11,.08)]") : "bg-transparent"}`}
+          ${scrolled && !open ? (dark ? "bg-burgundy-900/70 backdrop-blur-md" : "bg-ivory/80 backdrop-blur-md shadow-[0_1px_0_rgba(61,28,12,.08)]") : "bg-transparent"}`}
       >
         <div className="gutter mx-auto flex h-[var(--header-h)] max-w-[1600px] items-center justify-between gap-6">
           <Link href={href(locale)} className="relative z-10 block shrink-0" aria-label={`${dict.meta.siteName} — ${dict.nav.home}`}>

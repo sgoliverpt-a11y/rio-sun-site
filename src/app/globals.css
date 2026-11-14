@@ -297,6 +297,7 @@ html.intro-done { --after-intro: .15s; }
 @keyframes hero-word { from { opacity: 0; transform: translateY(.12em); } to { opacity: 1; transform: none; } }
 
 /* Intro overlay: the approved logo motion, then the curtain lifts */
+.intro-flat { background: var(--color-burgundy-800); }
 .intro { animation: intro-out 1.8s cubic-bezier(.45,0,.25,1) 3.4s forwards; }
 .intro > * { animation: intro-drift 1.8s cubic-bezier(.45,0,.25,1) 3.4s forwards; }
 @keyframes intro-drift { to { transform: scale(1.035); filter: blur(3px); } }

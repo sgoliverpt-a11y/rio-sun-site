@@ -30,8 +30,7 @@ export function IntroOverlay({ label }: { label: string }) {
   return (
     <>
       <script dangerouslySetInnerHTML={{ __html: pre }} />
-      <div className="intro surface-dark grain fixed inset-0 z-[45] flex items-center justify-center" aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_45%,rgba(138,31,51,.55),transparent_70%)]" />
+      <div className="intro surface-dark intro-flat grain fixed inset-0 z-[45] flex items-center justify-center" aria-hidden>
         <HeroLogo className="w-[min(80vw,820px)]" />
         <button type="button" className="intro-skip absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] tracking-[.08em] text-gold-200/70 underline-offset-4 hover:underline"
           tabIndex={-1}>{label}</button>
@@ -55,7 +54,7 @@ export function Hero({ locale, dict }: P) {
       style={{ ["--w-d" as string]: `${d.size}vw`, ["--i-d" as string]: `${d.indent}vw`, ["--w-m" as string]: `${m.size}vw`, ["--i-m" as string]: `${m.indent}vw` }}>
 
       {/* sun glow behind the window */}
-      <div aria-hidden className="absolute right-[2vw] top-[6vh] h-[70vh] w-[44vw] rounded-full bg-[radial-gradient(closest-side,rgba(246,196,127,.18),rgba(138,31,51,.16)_55%,transparent)] blur-2xl max-md:left-1/2 max-md:w-[120vw] max-md:-translate-x-1/2" />
+      <div aria-hidden className="absolute right-[2vw] top-[6vh] h-[70vh] w-[44vw] rounded-full bg-[radial-gradient(closest-side,rgba(246,196,127,.18),rgba(163,88,42,.16)_55%,transparent)] blur-2xl max-md:left-1/2 max-md:w-[120vw] max-md:-translate-x-1/2" />
 
       {/* THE WINDOW — expressive area reserved for the hero film */}
       <div className="hero-window relative z-0 mx-auto max-md:mt-[calc(var(--header-h)+3svh)] max-md:h-[52svh] max-md:w-[74vw] md:absolute md:bottom-[9svh] md:right-[7vw] md:top-[calc(var(--header-h)+5svh)] md:w-[min(30vw,54svh)]">
@@ -193,7 +192,7 @@ export function Story({ locale, dict }: P) {
       <div className="relative mt-20 md:mt-28">
         <div data-reveal="fan" data-fan="soft" className="relative">
           <Media id="MOTHER_DAUGHTER_PORTRAIT" locale={locale} tone="dark" focus="50% 30%" light="left" brief className="max-h-[88svh]" />
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(28,1,7,.75)_0%,rgba(28,1,7,.2)_55%,transparent)]" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(28,11,4,.75)_0%,rgba(28,11,4,.2)_55%,transparent)]" />
           <p className="gutter absolute left-0 top-1/2 max-w-[18ch] -translate-y-1/2 font-display text-[clamp(1.45rem,2.7vw,2.9rem)] italic leading-[1.08] text-ivory md:max-w-[16ch]">{s.note}</p>
         </div>
       </div>

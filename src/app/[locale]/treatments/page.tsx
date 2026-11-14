@@ -62,7 +62,7 @@ export default async function TreatmentsPage({ params }: Props) {
                       {/* phones: a wide editorial card image that opens in a fan as it is reached */}
                       <div className="relative aspect-[3/2] overflow-hidden sm:hidden" data-reveal="fan" data-fan={i % 2 ? "r" : undefined}>
                         <Media id={tr.media} locale={locale} tone="dark" fill label={false} light={i % 2 ? "right" : "left"} />
-                        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(28,1,7,0)_50%,rgba(28,1,7,.5))]" />
+                        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(28,11,4,0)_50%,rgba(28,11,4,.5))]" />
                       </div>
                       <div className="hidden sm:block" data-reveal="fan"><Media id={tr.media} locale={locale} tone="dark" label={false} /></div>
                       <div>
