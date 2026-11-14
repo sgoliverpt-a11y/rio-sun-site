@@ -20,7 +20,7 @@ export default function BrandLab() {
     .lab{font:15px/1.6 system-ui,sans-serif;color:#f7f1e7;max-width:1100px;margin:0 auto;padding:48px 20px 96px}
     .lab h1{font:400 34px/1.1 Georgia,serif;margin:0 0 8px}.lab h2{font:400 22px/1.2 Georgia,serif;margin:56px 0 8px}
     .lab p{color:#f7f1e7b3;max-width:62ch;margin:0 0 16px}
-    .stage{position:relative;background:radial-gradient(80% 90% at 50% 40%,#4a2f1f,#1d130d);border-radius:4px;padding:32px}
+    .stage{position:relative;background:radial-gradient(80% 90% at 50% 40%,#8a4318,#2a1308);border-radius:4px;padding:32px}
     .stage img,.stage svg{display:block;width:100%;height:auto}
     .stack{position:relative}.stack img+img{position:absolute;inset:0}
     .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}@media(max-width:700px){.grid{grid-template-columns:1fr}}
@@ -29,7 +29,7 @@ export default function BrandLab() {
     .draw{stroke-dasharray:1;stroke-dashoffset:1}
     .play .draw{animation:draw var(--d) cubic-bezier(.65,0,.35,1) var(--t) forwards}
     @keyframes draw{to{stroke-dashoffset:0}}
-    button.replay{margin-top:16px;background:linear-gradient(100deg,#a06334,#e2a861 30%,#fde8bb 50%,#c88f4a 80%);color:#1d130d;border:0;border-radius:99px;padding:12px 22px;font:600 13px system-ui;letter-spacing:.1em;cursor:pointer}
+    button.replay{margin-top:16px;background:linear-gradient(100deg,#a06334,#e2a861 30%,#fde8bb 50%,#c88f4a 80%);color:#2a1308;border:0;border-radius:99px;padding:12px 22px;font:600 13px system-ui;letter-spacing:.1em;cursor:pointer}
     @media (prefers-reduced-motion: reduce){.draw{stroke-dashoffset:0!important;animation:none!important}}
   `;
   const timing: Record<string, [number, number]> = { bandUpper: [0.2, 1.7], bandLower: [0.6, 1.7], sunArc: [1.3, 1.4] };

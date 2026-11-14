@@ -7,12 +7,12 @@
    Colours sampled from the approved emblem (burgundy field + gold bands).
    ───────────────────────────────────────────────────────────── */
 @theme {
-  --color-burgundy-950: #140c08;
-  --color-burgundy-900: #1d130d;
-  --color-burgundy-800: #2a1c14;
-  --color-burgundy-700: #3a271c;
-  --color-burgundy-600: #4c3426;
-  --color-burgundy-500: #654634;
+  --color-burgundy-950: #1c0b04;
+  --color-burgundy-900: #2a1308;
+  --color-burgundy-800: #3d1c0c;
+  --color-burgundy-700: #55280f;
+  --color-burgundy-600: #6e3616;
+  --color-burgundy-500: #8c4a20;
 
   --color-gold-100: #fef3d9;
   --color-gold-200: #fde8bb;
@@ -38,6 +38,7 @@
 :root {
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --header-h: 4.25rem;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .85  0 0 0 0 .6  0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --gold-metal: linear-gradient(100deg, #a06334 0%, #e2a861 22%, #fde8bb 42%, #f6c47f 58%, #c88f4a 78%, #8a5a2b 100%);
   color-scheme: light;
 }
@@ -122,8 +123,10 @@ body {
   --surface-line: color-mix(in oklab, var(--color-gold-300) 28%, transparent);
   --surface-accent: var(--color-gold-300);
   background:
-    radial-gradient(120% 80% at 70% 0%, #4a2f1f 0%, transparent 60%),
-    radial-gradient(90% 70% at 0% 100%, #1a110b 0%, transparent 70%),
+    var(--grain),
+    radial-gradient(55% 45% at 82% 6%, rgb(246 196 127 / 0.16) 0%, transparent 70%),
+    radial-gradient(120% 80% at 70% 0%, #8a4318 0%, transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, #1f0c04 0%, transparent 70%),
     var(--color-burgundy-800);
   color: var(--surface-fg);
 }
